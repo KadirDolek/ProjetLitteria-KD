@@ -25,13 +25,13 @@ export default function Collection() {
   return (
     <section className="h-auto mt-42 text-black mb-24">
     <div>
-        <h2 className="mb-12">Rapide à lire ! (moins de 200 pages)</h2>
-        <div className="flex overflow-x-auto w-auto gap-4">
+        <h2 className="mb-12 font-bold text-2xl">Rapide à lire ! (moins de 200 pages)</h2>
+        <div className="flex overflow-x-auto w-auto gap-4 shadow-2xl">
             {light.map((book) => (
             <div
                 key={book.id}
-                className="min-w-[200px] text-center bg-transparent rounded-xl shadow hover:shadow-lg">
-                    <p>{book.title}</p>
+                className="min-w-[220px] h-70 text-center bg-transparent rounded-xl shadow hover:shadow-lg">
+                    <p className="font-bold">{book.title}</p>
                     <img className="h-42 w-32 mx-auto" src={book.image_url} alt="" />
                 <p className="text-sm mt-1 text-amber-600">{book.num_pages} pages</p>
                 <Link href={`/details/${book.id}`} className="text-amber-600 mt-2 block">
