@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBooks } from "../../store/bookSlice";
 import Link from 'next/link';
+import { notFound } from 'next/navigation'
 
 
 export default function Collection() {
@@ -23,7 +24,7 @@ export default function Collection() {
   const currentItems = data.slice(startIdx, startIdx + itemsPerPage);
 
   if (status === 'loading') return <div>Chargement...</div>;
-  if (!data.length) return null;
+  if (!data.length) return notFound;
 
   return (
     <section className='h-auto mt-42 text-black'>
@@ -50,7 +51,7 @@ export default function Collection() {
 
               {/* Derrière */}
               <div className="flip-back bg-transparent rounded-3xl shadow-2xl flex items-center justify-center p-4">
-                <Link href ="/">
+                <Link href ={`/details/${book.id}`}>
                 <p className="text-black text-sm text-center line-clamp-7 font-bold">
                   {book.description}
                 </p>
