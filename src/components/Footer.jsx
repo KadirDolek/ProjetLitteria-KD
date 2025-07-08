@@ -20,7 +20,7 @@ export default function Footer() {
               <a className='font-bold' href="/DocumentationProjet.pdf" target="_blank" rel="noopener noreferrer">Docs</a>
             </span>
             <span className='text-center font-bold'>FAQ</span>
-            <span className='text-center'>Copyright ©</span>
+            <span className='text-center'>Copyright ©2025 </span>
           </div>
           <div className='w-full text-black flex flex-col gap-2'>
             <Link className='text-center cursor-pointer' href="https://github.com/KadirDolek">
@@ -29,6 +29,7 @@ export default function Footer() {
             <Link className='text-center' href="https://linkedin.com/in/kadir-dölek-572975226">
               <i className="fa-brands fa-linkedin"> Linkedin</i>
             </Link>
+            <span className='text-center'>Projet à but éducatif réalisé par Kadir Dolek.</span>
           </div>
         </div>
       </div>
