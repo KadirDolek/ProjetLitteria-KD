@@ -44,7 +44,7 @@ export default function Navbar() {
           <Link href="/" className="block py-2 px-4 text-black hover:underline font-bold">
             Accueil
           </Link>
-          <Link href="/about" className="block py-2 px-4 text-black hover:underline font-bold">
+          <Link href="/recently" className="block py-2 px-4 text-black hover:underline font-bold">
             Sorties récentes
           </Link>
           <Link href="/collection" className="block py-2 px-4 text-black hover:underline font-bold">

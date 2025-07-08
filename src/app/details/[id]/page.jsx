@@ -29,7 +29,6 @@ export default function Details() {
       <hr className='w-90 my-4' />
       <p className='text-black text-center text-xl px-12 font-bold'>{product.description}</p>
       <p className='text-black text-2xl mt-12 mb-6'>{product.rating} ⭐</p>
-
       <button className='border bg-amber-900 cursor-pointer px-8 shadow-2xl border-none rounded-4xl font-bold py-2'>Ajouter au panier</button>
     </div>
   );
