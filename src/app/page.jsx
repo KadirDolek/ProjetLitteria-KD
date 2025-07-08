@@ -1,20 +1,22 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBooks } from "../store/bookSlice";
 
 export default function Home() {
-  const [data, setData] = useState(null);
+  const dispatch = useDispatch();
+  const { data, status } = useSelector((state) => state.books);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
   useEffect(() => {
-    fetch("https://example-data.draftbit.com/books")
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((error) => console.log(error));
-  }, []);
+    if (status === 'idle') dispatch(fetchBooks());
+  }, [dispatch, status]);
 
-  if (!data) return <div className="text-black">Chargement...</div>;
+  if (status === 'loading') return <div className="text-black">Chargement...</div>;
+  if (status === 'failed') return <div className="text-red-500">Erreur de chargement</div>;
+  if (!data.length) return null;
 
   const auteurRecherche = "J.K. Rowling";
   const livresAuteur = data.filter(book => book.authors && book.authors.includes(auteurRecherche));
