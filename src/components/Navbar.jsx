@@ -22,11 +22,11 @@ export default function Navbar() {
 
   return (
     <nav className="bg-transparent flex justify-between relative">
-      <div className="max-w-7xl flex items-center py-3">
+      <div className="max-w-7xl flex items-center pt-0">
         <div className="flex items-center space-x-4">
-          <Link href="/" className="text-black font-bold text-xl min-w-full">
-            Litteria
-            <img src="zob" alt="zob" />
+          <Link href="/" className="text-black font-bold text-xl min-w-full mt-3">
+            <img className="w-24 mt-0 pt-0" src="./Logo_livre.png" alt="zob" />
+            <p className='absolute -mt-24 -z-1 -mx-2 h-12 text-4xl text-amber-900'>Litteria</p>
           </Link>
           <button
             className="text-black focus:outline-none text-2xl cursor-pointer"
@@ -69,7 +69,7 @@ export default function Navbar() {
       <div>
         <input type="search" className="w-100 my-6 bg-white text-black border-none rounded-4xl" />
       </div>
-      <div className="my-6 flex gap-6">
+      <div className="my-6 flex gap-6 py-4">
         <i onClick={toggleMenuUser} aria-expanded={isOpened} className='bxr text-black  bx-user cursor-pointer rounded-2xl scale-160'></i> 
         <Link href="/" className="bxr bx-shopping-bag bx-bounce text-black cursor-pointer rounded-2xl scale-160" style={{ color: "#000000" }} />
         <i className="bxr bx-moon text-black cursor-pointer rounded-2xl scale-160 " />
