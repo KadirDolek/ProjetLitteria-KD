@@ -45,7 +45,7 @@ export default function Navbar() {
             Accueil
           </Link>
           <Link href="/recently" className="block py-2 px-4 text-black hover:underline font-bold">
-            Sorties récentes
+            Thème aléatoire
           </Link>
           <Link href="/collection" className="block py-2 px-4 text-black hover:underline font-bold">
             Notre bibliothèque
