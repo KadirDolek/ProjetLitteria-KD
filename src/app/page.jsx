@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBooks } from "../store/bookSlice";
@@ -24,25 +25,44 @@ export default function Home() {
   const livresAuteur = data.filter(
     (book) => book.authors && book.authors.includes(auteurRecherche)
   );
+  
   const totalPages = Math.ceil(livresAuteur.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
   const currentItems = livresAuteur.slice(startIdx, startIdx + itemsPerPage);
 
   return (
     <>
-      <section className="h-auto flex justify-center mt-36 mb-28">
+      <motion.section 
+      className="h-auto flex justify-center mt-36 mb-28"
+      initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true, amount: 0.2 }}>
         <div className="w-3/4 bg-gray-700 h-112 rounded-4xl shadow-2xl">
           <p className="text-white p-12"> Romance,School,Dystopique</p>
         </div>
-      </section>
-      <section className="flex justify-center mb-28">
-        <div className="w-2/4 bg-gray-700 h-112 rounded-4xl shadow-2xl">
-        <p className="text-white p-12">Sorties récentes/</p>
-        </div>
-      </section>
-      <section className="flex justify-center flex-col mb-24">
+      </motion.section>
+      <motion.section 
+      className="flex justify-center flex-col mb-24"
+      initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true, amount: 0.2 }}>
         <div className="px-54 mb-24">
-          <h2 className="text-amber-900 font-bold">
+          <h2 className="text-amber-900 font-bold text-2xl">
+            Sorties les plus récentes :
+          </h2>
+        </div>
+        <div className="w-3/4 bg-gray-700 h-124 rounded-4xl flex mx-auto flex-col gap-3 p-6 shadow-2xl"></div>
+      </motion.section>
+      <motion.section 
+        className="flex justify-center flex-col mb-24" 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true, amount: 0.2 }}>
+        <div className="px-54 mb-24">
+          <h2 className="text-amber-900 font-bold text-2xl">
             Sorties littéraires de J.K. Rowling :
           </h2>
         </div>
@@ -125,7 +145,7 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }
