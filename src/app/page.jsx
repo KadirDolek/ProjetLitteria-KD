@@ -31,12 +31,12 @@ export default function Home() {
   return (
     <>
       <section className="h-auto flex justify-center mt-36 mb-28">
-        <div className="w-3/4 bg-gray-700 h-112 rounded-4xl">
+        <div className="w-3/4 bg-gray-700 h-112 rounded-4xl shadow-2xl">
           <p className="text-white p-12"> Romance,School,Dystopique</p>
         </div>
       </section>
       <section className="flex justify-center mb-28">
-        <div className="w-2/4 bg-gray-700 h-112 rounded-4xl">
+        <div className="w-2/4 bg-gray-700 h-112 rounded-4xl shadow-2xl">
         <p className="text-white p-12">Sorties récentes/</p>
         </div>
       </section>
@@ -46,7 +46,7 @@ export default function Home() {
             Sorties littéraires de J.K. Rowling :
           </h2>
         </div>
-        <div className="w-3/4 bg-gray-700 h-152 rounded-4xl flex mx-auto flex-col gap-3 p-6">
+        <div className="w-3/4 bg-gray-700 h-152 rounded-4xl flex mx-auto flex-col gap-3 p-6 shadow-2xl">
           {currentItems.map((book) => (
             <div key={book.id} className="text-white px-2 gap-3 flex h-42">
               <img

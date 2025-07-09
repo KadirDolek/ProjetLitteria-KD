@@ -8,7 +8,9 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
 const booksSlice = createSlice({
   name: 'books',
   initialState: { data: [], status: 'idle', error: null },
-  reducers: {},
+  reducers: {
+    
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchBooks.pending, (state) => { state.status = 'loading'; })

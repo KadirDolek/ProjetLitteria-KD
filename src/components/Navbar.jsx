@@ -1,10 +1,13 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen((prev) => {
@@ -12,6 +15,7 @@ export default function Navbar() {
       return !prev;
     });
   };
+
   const toggleMenuUser = () => {
     setIsOpened((prev) => {
       if (!prev) setIsOpen(false); 
@@ -19,6 +23,13 @@ export default function Navbar() {
     });
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery('');
+    }
+  };
 
   return (
     <nav className="bg-transparent flex justify-between relative">
@@ -32,8 +43,7 @@ export default function Navbar() {
             className="text-black focus:outline-none text-2xl cursor-pointer"
             onClick={toggleMenu}
             aria-label="Ouvrir le menu"
-            aria-expanded={isOpen}
-          >
+            aria-expanded={isOpen}>
             ☰
           </button>
         </div>
@@ -50,28 +60,35 @@ export default function Navbar() {
           <Link href="/collection" className="block py-2 px-4 text-black hover:underline font-bold">
             Notre bibliothèque
           </Link>
-          
         </div>
       )}
       {isOpened && (
         <div className="absolute left-0 top-full w-full flex flex-col items-center bg-transparent py-2 z-10">
-          <Link href="/" className="block py-2 px-4 text-black hover:underline font-bold">
+          <Link href="/login" className="block py-2 px-4 text-black hover:underline font-bold">
             Inscription/Connexion
           </Link>
           <Link href="/about" className="block py-2 px-4 text-black hover:underline font-bold">
-          Ma collection
+            Historique de commande
           </Link>
           <Link href="/about" className="block py-2 px-4 text-black hover:underline font-bold">
-          Données personnelles
+            Données personnelles
           </Link>
         </div>
       )}
       <div>
-        <input type="search" className="w-100 my-6 bg-white text-black border-none rounded-4xl" />
+        <form onSubmit={handleSearch}>
+          <input 
+            type="search" 
+            className="w-100 my-6 bg-white text-black border-none rounded-4xl px-4" 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Rechercher par titre ou auteur"
+          />
+        </form>
       </div>
       <div className="my-6 flex gap-6 py-4">
         <i onClick={toggleMenuUser} aria-expanded={isOpened} className='bxr text-black  bx-user cursor-pointer rounded-2xl scale-160'></i> 
-        <Link href="/" className="bxr bx-shopping-bag bx-bounce text-black cursor-pointer rounded-2xl scale-160" style={{ color: "#000000" }} />
+        <Link href="/panier" className="bxr bx-shopping-bag bx-bounce text-black cursor-pointer rounded-2xl scale-160" style={{ color: "#000000" }} />
         <i className="bxr bx-moon text-black cursor-pointer rounded-2xl scale-160 " />
       </div>
     </nav>
