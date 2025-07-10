@@ -27,6 +27,6 @@ export default function Login() {
              <button className='mx-auto'><img className='size-12 cursor-pointer'src="https://imgs.search.brave.com/i5jpEidif0rldoEakBbhITh8itjcUMaN6XbAtHw3Yzs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL2ZyZWUv/cG5nLTI1Ni9mcmVl/LWdvb2dsZS1sb2dv/LWljb24tZG93bmxv/YWQtaW4tc3ZnLXBu/Zy1naWYtZmlsZS1m/b3JtYXRzLS1zb2Np/YWwtbWVkaWEtc3Vp/dHMtcGFjay1sb2dv/cy1pY29ucy05MzQx/My5wbmc_Zj13ZWJw/Jnc9MTI4" alt="" /></button>
           </div>
         </div>
-    </section>
+    </section> 
   )
 }
