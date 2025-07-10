@@ -2,12 +2,14 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
+  const { data: session} = useSession();
 
   const toggleMenu = () => {
     setIsOpen((prev) => {
@@ -87,7 +89,20 @@ export default function Navbar() {
         </form>
       </div>
       <div className="my-6 flex gap-6 py-4">
-        <i onClick={toggleMenuUser} aria-expanded={isOpened} className='bxr text-black  bx-user cursor-pointer rounded-2xl scale-160'></i> 
+        {session?.user?.image ? (
+          <img
+            onClick={toggleMenuUser}
+            src={session.user.image}
+            alt="Profil"
+            className="w-8 h-8 rounded-full cursor-pointer border-2 border-black -my-4"
+          />
+        ) : (
+          <i 
+            onClick={toggleMenuUser} 
+            aria-expanded={isOpened} 
+            className='bxr text-black bx-user cursor-pointer rounded-2xl scale-160'
+          />
+        )} 
         <Link href="/panier" className="bxr bx-shopping-bag bx-bounce text-black cursor-pointer rounded-2xl scale-160" style={{ color: "#000000" }} />
         <i className="bxr bx-moon text-black cursor-pointer rounded-2xl scale-160 " />
       </div>

@@ -8,7 +8,6 @@ export default function Login() {
   const { data: session, status } = useSession()
   const router = useRouter()
 
-  // Si l'utilisateur est déjà connecté
   if (session) {
     return (
       <section className='w-auto mt-32 mb-18 flex flex-wrap flex-col'>
@@ -16,7 +15,7 @@ export default function Login() {
           Vous êtes déjà connecté !
         </h1>
         <div className='h-auto mx-auto rounded-3xl flex flex-wrap'>
-          <div className="w-full lg:w-[500px] h-[400px] shadow-2xl mx-auto rounded-3xl px-6 flex flex-col gap-6 border-2 justify-center">
+          <div className="w-full lg:w-[550px] h-[400px] shadow-2xl mx-auto rounded-3xl px-6 flex flex-col gap-6 border-2 justify-center">
             <h2 className='flex justify-center text-black font-bold text-xl'>
               Bienvenue {session.user.name} !
             </h2>
@@ -38,7 +37,7 @@ export default function Login() {
               onClick={() => signOut()}
               className='border-4 border-red-900 hover:bg-red-700 text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl bg-red-800 shadow-2xl py-2'
             >
-              Se déconnecter
+              Se déconnecter <i className='bxr  bx-arrow-out-left-square-half'></i> 
             </button>
           </div>
         </div>
