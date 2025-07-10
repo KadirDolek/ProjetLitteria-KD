@@ -23,7 +23,7 @@ export default function Details() {
   if (!product) return notFound();
 
   return (
-    <div className='flex flex-col items-center justify-center mx-auto w-full h-200 shadow-2xl mb-24 rounded-4xl mt-36'>
+    <div className='flex flex-col items-center justify-center mx-auto w-full h-auto py-6 shadow-2xl mb-24 rounded-4xl mt-36 px-48'>
     <h2 className='text-black text-4xl mb-12'>{product.title}</h2>
       <img className='h-80 w-60 rounded-lg' src={product.image_url} alt={product.title} />
       <hr className='w-90 my-4' />

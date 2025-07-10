@@ -67,10 +67,10 @@ export default function Navbar() {
           <Link href="/login" className="block py-2 px-4 text-black hover:underline font-bold">
             Inscription/Connexion
           </Link>
-          <Link href="/about" className="block py-2 px-4 text-black hover:underline font-bold">
+          <Link href="/orderhistory" className="block py-2 px-4 text-black hover:underline font-bold">
             Historique de commande
           </Link>
-          <Link href="/about" className="block py-2 px-4 text-black hover:underline font-bold">
+          <Link href="/userinfo" className="block py-2 px-4 text-black hover:underline font-bold">
             Données personnelles
           </Link>
         </div>
@@ -79,7 +79,7 @@ export default function Navbar() {
         <form onSubmit={handleSearch}>
           <input 
             type="search" 
-            className="w-100 my-6 bg-white text-black border-none rounded-4xl px-4" 
+            className="lg:w-100 sm:w-2/3 my-6 bg-white text-black border-none rounded-4xl px-4" 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Rechercher par titre ou auteur"
