@@ -6,6 +6,7 @@ import Script from "next/script";
 import Footer from "../components/Footer";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
+import { Providers } from './providers'
 
 
 
@@ -34,11 +35,13 @@ export default function RootLayout({ children }) {
         <link href='https://cdn.boxicons.com/fonts/animations.min.css' rel='stylesheet'></link>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}> 
+        <Providers>
         <Provider store={store}>
         <Navbar/>
         {children}
         <Footer/>
         </Provider>
+        </Providers>
       </body>
     </html>
   );
