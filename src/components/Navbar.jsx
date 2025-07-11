@@ -38,7 +38,7 @@ export default function Navbar() {
       <div className="max-w-7xl flex items-center pt-0">
         <div className="flex items-center space-x-4">
           <Link href="/" className="text-black font-bold text-xl min-w-full mt-3">
-            <img className="w-24 mt-0 pt-0" src="./Logo_livre.png" alt="zob" />
+            <img className="w-24 mt-0 pt-0" src="./Logo_livre.png" alt="Litteria" />
             <p className='absolute -mt-24 -z-1 -mx-2 h-12 text-4xl text-amber-900'>Litteria</p>
           </Link>
           <button
@@ -46,7 +46,7 @@ export default function Navbar() {
             onClick={toggleMenu}
             aria-label="Ouvrir le menu"
             aria-expanded={isOpen}>
-            ☰
+            <i className="bxr bx-align-left bx-wiggle " style={{color:'#000000'}}/> 
           </button>
         </div>
       </div>

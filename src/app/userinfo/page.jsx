@@ -63,7 +63,7 @@ export default function UserInfo() {
           <div className="flex flex-col gap-4">
             <button
               onClick={() => router.push("/")}
-              className="border-4 border-amber-900 hover:bg-amber-700 text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl bg-amber-800 shadow-2xl py-2"
+              className="bg-gradient-to-r from-amber-700 to-orange-800 hover:from-amber-700 hover:to-orange-800 text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl shadow-2xl py-2"
             >
               Retour à l'accueil
             </button>

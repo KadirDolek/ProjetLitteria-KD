@@ -1,9 +1,11 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useParams, notFound } from 'next/navigation'
+import { notFound, useParams } from 'next/navigation'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchBooks } from '../../../store/bookSlice'
+import { ajouterPanier } from '../../../store/cartSlice'
+
 
 export default function Details() {
   const { id } = useParams();
@@ -20,7 +22,11 @@ export default function Details() {
 
   const product = data.find(m => m.id.toString() === id);
 
-  if (!product) return notFound();
+  if (!product) return <notFound/>;
+
+    const handleAjouterPanier = () => {
+    dispatch(ajouterPanier(product));
+  };
 
   return (
     <div className='flex flex-col items-center justify-center mx-auto w-full h-auto py-6 shadow-2xl mb-24 rounded-4xl mt-36 px-48'>
@@ -29,7 +35,10 @@ export default function Details() {
       <hr className='w-90 my-4' />
       <p className='text-black text-center text-xl px-12 font-bold'>{product.description}</p>
       <p className='text-black text-2xl mt-12 mb-6'>{product.rating} ⭐</p>
-      <button className='border bg-amber-900 cursor-pointer px-8 shadow-2xl border-none rounded-4xl font-bold py-2'>Ajouter au panier</button>
+      <button onClick={handleAjouterPanier} 
+          className='border bg-gradient-to-r from-amber-700 to-orange-800 cursor-pointer hover:from-amber-800 hover:to-amber-900  px-8 shadow-2xl border-none rounded-4xl font-bold py-2'>
+          Ajouter au panier
+      </button>
     </div>
   );
 }

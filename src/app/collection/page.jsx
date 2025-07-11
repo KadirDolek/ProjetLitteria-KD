@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBooks } from "../../store/bookSlice";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+
 
 export default function Collection() {
   const dispatch = useDispatch();

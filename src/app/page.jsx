@@ -170,7 +170,7 @@ export default function Home() {
                   ➥ Voir les détails
                 </Link>
                 <span className="italic text-amber-50">
-                  <p className="line-clamp-8"> {book.description}</p>
+                  <p className="line-clamp-7"> {book.description}</p>
                   {book.rating} ⭐
                 </span>
               </div>

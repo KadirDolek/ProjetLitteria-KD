@@ -91,10 +91,10 @@ export default function Collection() {
             <div
                 key={book.id}
                 className="min-w-[220px] h-75 text-center bg-transparent rounded-xl shadow hover:shadow-lg">
-                    <p className="font-bold">{book.title}</p>
+                    <p className="font-bold mb-3 line-clamp-1">{book.title}</p>
                     <img className="h-42 w-32 mx-auto" src={book.image_url} alt="" />
                 <p className="text-sm mt-1 text-amber-600">{book.num_pages} pages</p>
-                <Link href={`/details/${book.id}`} className="text-amber-600 mt-2 block">
+                <Link href={`/details/${book.id}`} className="text-amber-600 shadow-2xl mt-2 block hover:text-amber-900">
                     Voir le livre
                 </Link>
             </div>
@@ -108,10 +108,10 @@ export default function Collection() {
             <div
                 key={book.id}
                 className="min-w-[220px] h-75 text-center bg-transparent rounded-xl shadow hover:shadow-lg">
-                    <p className="font-bold">{book.title}</p>
+                    <p className="font-bold mb-3 line-clamp-1">{book.title}</p>
                     <img className="h-42 w-32 mx-auto" src={book.image_url} alt="" />
                 <p className="text-sm mt-1 text-amber-600">{book.num_pages} pages</p>
-                <Link href={`/details/${book.id}`} className="text-amber-600 mt-2 block">
+                <Link href={`/details/${book.id}`} className="text-amber-600 mt-2 block hover:text-amber-900">
                     Voir le livre
                 </Link>
             </div>
@@ -125,10 +125,10 @@ export default function Collection() {
             <div
                 key={book.id}
                 className="min-w-[220px] h-75 text-center bg-transparent rounded-xl shadow hover:shadow-lg">
-                    <p className="font-bold">{book.title}</p>
+                    <p className="font-bold mb-3 line-clamp-1">{book.title}</p>
                     <img className="h-42 w-32 mx-auto" src={book.image_url} alt="" />
                 <p className="text-sm mt-1 text-amber-600">{book.num_pages} pages</p>
-                <Link href={`/details/${book.id}`} className="text-amber-600 mt-2 block">
+                <Link href={`/details/${book.id}`} className="text-amber-600 mt-2 block hover:text-amber-900">
                     Voir le livre
                 </Link>
             </div>
@@ -142,10 +142,10 @@ export default function Collection() {
             <div
                 key={book.id}
                 className="min-w-[220px] h-75 text-center bg-transparent rounded-xl shadow hover:shadow-lg">
-                    <p className="font-bold">{book.title}</p>
+                    <p className="font-bold mb-3 line-clamp-1">{book.title}</p>
                     <img className="h-42 w-32 mx-auto" src={book.image_url} alt="" />
                 <p className="text-sm mt-1 text-amber-600">{book.num_pages} pages</p>
-                <Link href={`/details/${book.id}`} className="text-amber-600 mt-2 block">
+                <Link href={`/details/${book.id}`} className="text-amber-600 mt-2 block hover:text-amber-900">
                     Voir le livre
                 </Link>
             </div>

@@ -1,5 +1,5 @@
 'use client'
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Ubuntu, Ubuntu_Sans, Merienda } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Script from "next/script";
@@ -11,14 +11,17 @@ import { Providers } from './providers'
 
 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+
+const geistMerienda = Merienda({
+  variable: "--font-merienda",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"]
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const geistUbuntu_Sans = Ubuntu_Sans({
+  variable: "--font-ubuntu-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"]
 });
 
 // export const metadata = {
@@ -34,7 +37,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://cdn.boxicons.com/fonts/basic/boxicons.min.css" />
         <link href='https://cdn.boxicons.com/fonts/animations.min.css' rel='stylesheet'></link>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}> 
+      <body className={`${geistMerienda.variable} ${geistUbuntu_Sans.variable} antialiased`}> 
         <Providers>
         <Provider store={store}>
         <Navbar/>
