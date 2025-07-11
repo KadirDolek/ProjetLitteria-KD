@@ -90,7 +90,7 @@ export default function Navbar() {
           </Link>
         </div>
       )}
-      <div className='hidden lg:block'>
+      <div className='hidden md:block'>
         <form onSubmit={handleSearch}>
           <input 
             type="search" 

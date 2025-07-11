@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <>
       <motion.section 
-      className="h-auto flex justify-center mt-36 mb-28"
+      className="h-auto justify-center mt-36 mb-28 hidden lg:flex"
       initial={{ opacity: 0, x: 80 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
