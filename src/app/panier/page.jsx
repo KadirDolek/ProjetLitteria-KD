@@ -58,7 +58,8 @@ export default function Panier() {
           ) : (
             <div>
               {items.map(item => (
-                <div key={item.id} className='flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 border-b border-gray-200 mb-4 gap-4'>
+                <div key={item.id} className='flex flex-col sm:flex-row items-start sm:items-center 
+                justify-between p-3 sm:p-4 border-b border-gray-200 mb-4 gap-4'>
                   <div className='flex items-center gap-4 w-full sm:w-auto'>
                     <img 
                       src={item.image_url} 
@@ -76,14 +77,16 @@ export default function Panier() {
                     <div className='flex items-center gap-2'>
                       <button 
                         onClick={() => handleModifierQuantite(item.id, item.quantity - 1)}
-                        className='bg-gradient-to-r from-gray-600 to-gray-700 hover:bg-gray-700 px-2 py-1 rounded cursor-pointer text-white min-w-[30px] h-8 flex items-center justify-center'
+                        className='bg-gradient-to-r from-gray-600 to-gray-700 
+                        hover:bg-gray-700 px-2 py-1 rounded cursor-pointer text-white min-w-[30px] h-8 flex items-center justify-center'
                       >
                         -
                       </button>
                       <span className='text-black font-bold min-w-[30px] text-center'>{item.quantity}</span>
                       <button 
                         onClick={() => handleModifierQuantite(item.id, item.quantity + 1)}
-                        className='bg-gradient-to-r from-gray-600 to-gray-700 hover:bg-gray-700 px-2 py-1 rounded cursor-pointer text-white min-w-[30px] h-8 flex items-center justify-center'
+                        className='bg-gradient-to-r from-gray-600 to-gray-700 
+                        hover:bg-gray-700 px-2 py-1 rounded cursor-pointer text-white min-w-[30px] h-8 flex items-center justify-center'
                       >
                         +
                       </button>
@@ -91,7 +94,8 @@ export default function Panier() {
                     
                     <button 
                       onClick={() => handleRetirerProduit(item.id)}
-                      className="bg-gradient-to-r from-amber-700 to-orange-800 hover:opacity-75 text-white px-3 sm:px-4 py-2 rounded-3xl cursor-pointer transition-all duration-300 text-sm sm:text-base whitespace-nowrap">
+                      className="bg-gradient-to-r from-amber-700 to-orange-800 hover:opacity-75 
+                      text-white px-3 sm:px-4 py-2 rounded-3xl cursor-pointer transition-all duration-300 text-sm sm:text-base whitespace-nowrap">
                       Retirer
                     </button>
                   </div>
