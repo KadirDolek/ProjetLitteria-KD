@@ -14,7 +14,7 @@
 }
 
 body {
-  background: linear-gradient(27deg,rgba(245, 245, 245, 1) 10%, rgba(237, 230, 185, 1) 92%);
+  background: linear-gradient(68deg,rgba(245, 245, 245, 1) 10%, rgba(237, 230, 185, 1) 92%);
   min-height: 100vh;
   color: var(--foreground);
   font-family: "Merienda";

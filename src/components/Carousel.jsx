@@ -33,7 +33,7 @@ export default function Carousel() {
 
   return (
     <section className="w-full">
-      <div className="w-3/4 h-[28rem] relative overflow-hidden bg-gray-200 rounded-2xl mx-auto">
+      <div className="w-3/4 h-[28rem] relative overflow-hidden bg-gray-200 rounded-2xl mx-auto shadow-2xl">
         {images.map((item, index) => (
           <Link href={item.href} key={index}>
             <div
@@ -52,7 +52,7 @@ export default function Carousel() {
       </div>
       
       <div className="flex justify-center">
-        <img className='w-md' src="/deco_Home.png" alt="" />
+        <img className='w-sm' src="/deco_Home.png" alt="" />
       </div>
     </section>
   )
