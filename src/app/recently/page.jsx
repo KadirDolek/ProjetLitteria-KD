@@ -8,12 +8,12 @@ import { notFound } from "next/navigation";
 
 export default function Collection() {
 
-// On dispatch mon reducer de books pour l'utiliser ici
+// On dispatch mon reducer pour utiliser books ici
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.books);
 
 
-// Ptit genre trié en lightpage en mode t'aimes pas trop lire donc c'est moinns de 200 pages (catégorie pour gland)
+// Ptit genre trié en lightpage en mode t'aimes pas trop lire donc c'est moinns de 200 pages (catégorie pour gland || Thème fixe)
   const lightPage = 200;
   const light = data.filter((book) => book.num_pages && book.num_pages < lightPage);
 
@@ -102,7 +102,7 @@ export default function Collection() {
         </div>
     </div>
         <div className="mb-12">
-            <h2 className="mb-12 font-bold text-2xl">Sélection aléatoire:{randomGenre1}</h2>
+            <h2 className="mb-12 font-bold text-2xl">Sélection aléatoire:&nbsp;{randomGenre1}</h2>
             <div className="flex overflow-x-auto w-auto gap-4 shadow-2xl">
             {random1.map((book) => (
             <div
@@ -119,7 +119,7 @@ export default function Collection() {
         </div>
         </div>
        <div className="mb-12">
-            <h2 className="mb-12 font-bold text-2xl">Sélection aléatoire:{randomGenre2}</h2>
+            <h2 className="mb-12 font-bold text-2xl">Sélection aléatoire:&nbsp;{randomGenre2}</h2>
             <div className="flex overflow-x-auto w-auto gap-4 shadow-2xl">
             {random2.map((book) => (
             <div
@@ -136,7 +136,7 @@ export default function Collection() {
         </div>
         </div>
         <div className="mb-12">
-            <h2 className="mb-12 font-bold text-2xl">Sélection aléatoire:{randomGenre3}</h2>
+            <h2 className="mb-12 font-bold text-2xl">Sélection aléatoire:&nbsp;{randomGenre3}</h2>
             <div className="flex overflow-x-auto w-auto gap-4 shadow-2xl">
             {random3.map((book) => (
             <div

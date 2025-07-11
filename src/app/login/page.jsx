@@ -29,13 +29,15 @@ export default function Login() {
             <p className='text-black text-center'>{session.user.email}</p>
             <button 
               onClick={() => router.push('/userinfo')}
-              className='bg-gradient-to-r from-amber-700 to-orange-800 hover:from-amber-800 hover:to-orange-900 text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl  shadow-2xl py-2'
+              className='bg-gradient-to-r from-amber-700 to-orange-800 hover:from-amber-800
+               hover:to-orange-900 text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl  shadow-2xl py-2'
             >
               Voir mon profil
             </button>
             <button 
               onClick={() => signOut()}
-              className='hover:from-red-800 hover:to-red-900 text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl bg-gradient-to-r from-red-700 to-red-800 shadow-2xl py-2'
+              className='hover:from-red-800 hover:to-red-900 text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl 
+              bg-gradient-to-r from-red-700 to-red-800 shadow-2xl py-2'
             >
               Se déconnecter <i className='bxr  bx-arrow-out-left-square-half'></i> 
             </button>

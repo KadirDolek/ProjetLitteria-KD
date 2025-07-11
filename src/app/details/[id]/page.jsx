@@ -42,7 +42,8 @@ export default function Details() {
       <p className='text-black text-2xl mt-12 mb-6'>{product.rating} ⭐</p>
       <button
         onClick={handleAjouterPanier}
-        className='border bg-gradient-to-r from-amber-700 to-orange-800 cursor-pointer hover:from-amber-800 hover:to-amber-900 px-8 shadow-2xl border-none rounded-4xl font-bold py-2'>
+        className='border bg-gradient-to-r from-amber-700 to-orange-800 cursor-pointer 
+        hover:from-amber-800 hover:to-amber-900 px-8 shadow-2xl border-none rounded-4xl font-bold py-2'>
         Ajouter au panier
       </button>
 

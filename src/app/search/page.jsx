@@ -89,8 +89,8 @@ export default function SearchPage() {
                 <p className="text-amber-50 font-bold">{book.rating} ⭐</p>
                 <Link 
                   href={`/details/${book.id}`} 
-                  className="mt-4 inline-block bg-gradient-to-r from-amber-700 to-orange-800  text-white px-4 py-2 rounded-lg hover:from-amber-800 hover:to-amber-900 transition-colors"
-                >
+                  className="mt-4 inline-block bg-gradient-to-r from-amber-700 to-orange-800  
+                  text-white px-4 py-2 rounded-lg hover:from-amber-800 hover:to-amber-900 transition-colors">
                   Voir détails
                 </Link>
               </div>

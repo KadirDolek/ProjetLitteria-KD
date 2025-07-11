@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBooks } from "../store/bookSlice";
 import Link from "next/link";
+import Carousel from '../components/Carousel'
 
 
 export default function Home() {
@@ -47,9 +48,7 @@ export default function Home() {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
         viewport={{ once: true, amount: 0.4 }}>
-        <div className="w-3/4 bg-gray-700 h-112 rounded-4xl shadow-2xl">
-          <p className="text-white p-12"> Romance,School,Dystopique</p>
-        </div>
+        <Carousel />
       </motion.section>
       <motion.section 
       className="flex justify-center flex-col mb-24"
