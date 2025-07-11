@@ -50,20 +50,28 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      {/* Liens du menu, affichés seulement si isOpen */}
-      {isOpen && (
-        <div className="absolute left-0 top-full w-full flex flex-col items-center bg-transparent py-2 z-10">
-          <Link href="/" className="block py-2 px-4 text-black hover:underline font-bold">
-            Accueil
-          </Link>
-          <Link href="/recently" className="block py-2 px-4 text-black hover:underline font-bold">
-            Thème aléatoire
-          </Link>
-          <Link href="/collection" className="block py-2 px-4 text-black hover:underline font-bold">
-            Notre bibliothèque
-          </Link>
-        </div>
-      )}
+{isOpen && (
+  <div className="absolute left-0 top-20 w-full flex flex-col items-center bg-transparent py-4 z-10 sm:flex ">
+    
+    {/* Champ de recherche qui passe dans le menu en mobile */}
+    <input
+      type="text"
+      placeholder="Rechercher..."
+      className="w-11/12 px-4 py-0 rounded-2xl bg-white mb-4 text-black md:hidden"
+    />
+
+    <Link href="/" className="block py-2 px-4 text-black hover:underline font-bold">
+      Accueil
+    </Link>
+    <Link href="/recently" className="block py-2 px-4 text-black hover:underline font-bold">
+      Thème aléatoire
+    </Link>
+    <Link href="/collection" className="block py-2 px-4 text-black hover:underline font-bold">
+      Notre bibliothèque
+    </Link>
+  </div>
+)}
+      
       {isOpened && (
         <div className="absolute left-0 top-full w-full flex flex-col items-center bg-transparent py-2 z-10">
           <Link href="/login" className="block py-2 px-4 text-black hover:underline font-bold">
@@ -77,11 +85,11 @@ export default function Navbar() {
           </Link>
         </div>
       )}
-      <div>
+      <div className='hidden lg:block'>
         <form onSubmit={handleSearch}>
           <input 
             type="search" 
-            className="lg:w-100 sm:w-2/3 my-6 bg-white text-black border-none rounded-4xl px-4" 
+            className="lg:w-100 my-6 bg-white text-black border-none rounded-4xl px-4" 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Rechercher par titre ou auteur"

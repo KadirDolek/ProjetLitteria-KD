@@ -70,7 +70,7 @@ export default function SearchPage() {
             }
 
             return (
-              <div key={book.id} className="bg-gray-700 rounded-lg p-4 shadow-lg">
+              <div key={book.id} className="bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg p-4 shadow-lg">
                 <Link href={`/details/${book.id}`}>
                   <img
                     src={book.image_url}
@@ -84,12 +84,12 @@ export default function SearchPage() {
                   </Link>
                 </h2>
                 {authorsDisplay && (
-                  <p className="text-gray-300 mb-2 font-bold">Auteur: {authorsDisplay}</p>
+                  <p className="text-gray-300 mb-2 font-bold">Auteur : &nbsp; {authorsDisplay}</p>
                 )}
                 <p className="text-amber-50 font-bold">{book.rating} ⭐</p>
                 <Link 
                   href={`/details/${book.id}`} 
-                  className="mt-4 inline-block bg-amber-900 text-white px-4 py-2 rounded-lg hover:bg-amber-800 transition-colors"
+                  className="mt-4 inline-block bg-gradient-to-r from-amber-700 to-orange-800  text-white px-4 py-2 rounded-lg hover:from-amber-800 hover:to-amber-900 transition-colors"
                 >
                   Voir détails
                 </Link>

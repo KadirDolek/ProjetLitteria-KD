@@ -94,7 +94,7 @@ export default function Panier() {
                     
                     <button 
                       onClick={() => handleRetirerProduit(item.id)}
-                      className="bg-gradient-to-r from-amber-700 to-orange-800 hover:from-amber-700 hover:to-orange-800 text-white px-4 py-2 rounded-3xl cursor-pointer transition-all duration-300">
+                      className="bg-gradient-to-r from-amber-700 to-orange-800 hover:opacity-75 text-white px-4 py-2 rounded-3xl cursor-pointer transition-all duration-300">
                       Retirer
                     </button>
                   </div>
@@ -104,7 +104,7 @@ export default function Panier() {
               <div className='flex justify-end mt-4'>
                 <button 
                   onClick={handleViderPanier}
-                  className='bg-gradient-to-r from-amber-700 to-orange-800 hover:from-amber-700 hover:bg-amber-800 text-white px-6 h-8 rounded-3xl cursor-pointer'
+                  className='bg-gradient-to-r from-amber-700 to-orange-800 hover:opacity-75 text-white px-6 h-8 rounded-3xl cursor-pointer'
                 >
                   Vider le panier
                 </button>
@@ -117,7 +117,7 @@ export default function Panier() {
           <span className='flex justify-center gap-6 mt-10'> 
             <p className='text-black text-2xl'>Code de réduction:</p>
             <input className='bg-white border border-black px-2 py-1' type="text" placeholder='Code de réduction' />
-            <button className='cursor-pointer bg-gradient-to-r from-amber-700 to-orange-800 hover:from-amber-700 px-6 rounded-2xl shadow-2xl hover:opacity-75'>Valider</button>
+            <button className='cursor-pointer bg-gradient-to-r from-amber-700 to-orange-800  px-6 rounded-2xl shadow-2xl hover:opacity-75'>Valider</button>
           </span>
         </div>
         
