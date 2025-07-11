@@ -54,11 +54,16 @@ export default function Navbar() {
   <div className="absolute left-0 top-20 w-full flex flex-col items-center bg-transparent py-4 z-10 sm:flex ">
     
     {/* Champ de recherche qui passe dans le menu en mobile */}
-    <input
+    <form onSubmit={handleSearch}>
+          <input
       type="text"
       placeholder="Rechercher..."
       className="w-11/12 px-4 py-0 rounded-2xl bg-white mb-4 text-black md:hidden"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
     />
+        </form>
+    
 
     <Link href="/" className="block py-2 px-4 text-black hover:underline font-bold">
       Accueil
