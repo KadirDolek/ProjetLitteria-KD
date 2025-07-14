@@ -142,9 +142,9 @@ export default function Panier() {
           </p>
           <button 
             disabled={items.length === 0}
-            className={`px-6 sm:px-10 rounded-2xl shadow-2xl mt-6 mx-auto block h-10 sm:h-12 text-sm sm:text-base ${
+            className={`px-6 sm:px-10 rounded-3xl shadow-2xl mt-6 mx-auto block h-10 sm:h-12 text-sm sm:text-base ${
               items.length === 0 
-                ? 'bg-gradient-to-r from-gray-400 to-gray-500 text-gray-200'
+                ? 'bg-gradient-to-l from-gray-400 to-gray-500 text-gray-200'
                 : 'bg-gradient-to-r from-amber-700 to-orange-800 hover:opacity-75 cursor-pointer text-white'
             }`}
           >

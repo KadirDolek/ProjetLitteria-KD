@@ -15,7 +15,7 @@ export default function Home() {
   const itemsPerPage = 3;
   const [bestCurrentPage, setBestCurrentPage] = useState(1);
   const bestItemsPerPage = 3;
-
+  
   useEffect(() => {
     if (status === "idle") dispatch(fetchBooks());
   }, [dispatch, status]);
@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <>
       <motion.section 
-      className="h-auto justify-center mt-36 mb-28 hidden lg:flex"
+      className="h-auto justify-center mt-36 mb-20 hidden lg:flex"
       initial={{ opacity: 0, x: 80 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
@@ -56,9 +56,9 @@ export default function Home() {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
         viewport={{ once: true, amount: 0.4 }}>
-        <div className="px-54 mb-24">
+        <div className="px-54 mb-24"> 
           <h2 className="text-amber-900 font-bold text-2xl">
-            Nos livres les mieux notés :
+            Nos livres les mieux notés :  
           </h2>
         </div>
         <div className="w-3/4 bg-gray-700 h-152 rounded-4xl flex mx-auto flex-col gap-3 p-6 shadow-2xl">
@@ -85,7 +85,6 @@ export default function Home() {
             </div>
           ))}
 
-          {/* Bouton Next/Prev*/}
           <div className="flex justify-center items-center gap-2 mt-4">
             <button
               className="px-2 py-1 text-amber-50 cursor-pointer hover:text-amber-700"
@@ -96,7 +95,7 @@ export default function Home() {
             </button>
             {/* Numéros de page */}
             {Array.from({ length: bestTotalPages }).map((_, i) => {
-              // Affiche toujours première dernière et page courante
+              // Affiche les première dernière pages + la page courante
               if (
                 i === 0 ||
                 i === bestTotalPages - 1 ||

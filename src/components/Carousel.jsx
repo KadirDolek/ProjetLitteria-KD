@@ -52,7 +52,7 @@ export default function Carousel() {
       </div>
       
       <div className="flex justify-center">
-        <img className='w-sm' src="/deco_Home.png" alt="" />
+        <img className='w-sm relative -top-18 z-20' src="/deco_Home.png" alt="" />
       </div>
     </section>
   )

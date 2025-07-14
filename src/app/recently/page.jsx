@@ -46,7 +46,11 @@ export default function Collection() {
                   "Philosophy",
                   "Thriller",
                   "Childrens",
-                  "Crime"
+                  "Crime",
+                  "Comics",
+                  "Drama",
+                  "Theatre",
+                  "Horror"
                   ];
 
 

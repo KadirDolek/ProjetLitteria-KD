@@ -90,7 +90,7 @@ export default function SearchPage() {
                 <Link 
                   href={`/details/${book.id}`} 
                   className="mt-4 inline-block bg-gradient-to-r from-amber-700 to-orange-800  
-                  text-white px-4 py-2 rounded-lg hover:from-amber-800 hover:to-amber-900 transition-colors">
+                  text-white px-4 py-2 rounded-2xl hover:from-amber-800 hover:to-amber-900 transition-colors">
                   Voir détails
                 </Link>
               </div>
