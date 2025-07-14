@@ -1,5 +1,5 @@
 export const localAuth = {
-  // Récupérer tous les utilisateurs
+  // Récup tous les users 
   getUsers: () => {
     if (typeof window === 'undefined') return [];
     const users = localStorage.getItem('users');
@@ -12,11 +12,11 @@ export const localAuth = {
     localStorage.setItem('users', JSON.stringify(users));
   },
 
-  // Inscrire un nouvel utilisateur
+  // Inscrire 
   register: (email, password) => {
     const users = localAuth.getUsers();
     
-    // Vérifier si l'utilisateur existe déjà
+    // Vérifier si existe déjà
     const existingUser = users.find(user => user.email === email);
     if (existingUser) {
       return { success: false, message: 'Cet email est déjà utilisé' };
@@ -26,8 +26,8 @@ export const localAuth = {
     const newUser = {
       id: Date.now().toString(),
       email,
-      password, // En production, il faudrait hasher le mot de passe
-      name: email.split('@')[0], // Utiliser la partie avant @ comme nom
+      password, 
+      name: email.split('@')[0],
       image: `https://ui-avatars.com/api/?name=${email.split('@')[0]}&background=random`,
       createdAt: new Date().toISOString()
     };

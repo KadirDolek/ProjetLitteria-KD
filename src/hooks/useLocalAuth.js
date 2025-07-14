@@ -23,7 +23,7 @@ export const useLocalAuth = () => {
     const result = localAuth.register(email, password);
     if (result.success) {
       setUser(result.user);
-      // Connecter automatiquement après inscription
+      // Ca permet de se connecter qd on finit l'inscription
       localAuth.login(email, password);
     }
     return result;

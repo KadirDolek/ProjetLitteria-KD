@@ -10,7 +10,7 @@ export default function UserInfo() {
   const { user: localUser, logout } = useLocalAuth();
   const router = useRouter();
 
-  // Suppression du useEffect qui causait la redirection automatique
+
 
   if (status === "loading") {
     return (
