@@ -1,18 +1,16 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useLocalAuth } from "../../hooks/useLocalAuth";
 
 export default function UserInfo() {
   const { data: session, status } = useSession();
+  const { user: localUser, logout } = useLocalAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login");
-    }
-  }, [status, router]);
+  // Suppression du useEffect qui causait la redirection automatique
 
   if (status === "loading") {
     return (
@@ -22,7 +20,7 @@ export default function UserInfo() {
     );
   }
 
-  if (status === "unauthenticated") {
+  if (status === "unauthenticated" && !localUser) {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="text-black text-xl">
@@ -31,6 +29,9 @@ export default function UserInfo() {
       </div>
     );
   }
+
+  // Utiliser les données de NextAuth ou du système local
+  const user = session?.user || localUser;
 
   return (
     <section className="w-auto mt-32 mb-18 flex flex-wrap flex-col">
@@ -41,7 +42,7 @@ export default function UserInfo() {
         <div className="w-full lg:w-[600px] h-auto shadow-2xl mx-auto rounded-3xl px-8 py-8 flex flex-col gap-6 border-2">
           <div className="flex justify-center">
             <img
-              src={session.user.image}
+              src={user.image}
               alt="Photo de profil"
               className="w-24 h-24 rounded-full"
             />
@@ -50,15 +51,23 @@ export default function UserInfo() {
             <h2 className="text-black font-bold text-lg mb-2">
               <span className="flex justify-between">
                 <p> Nom d'utilisateur:</p>
-                <p>{session.user.name}</p>
+                <p>{user.name}</p>
               </span>
             </h2>
             <h2 className="text-black font-bold text-lg mb-2">
               <span className="flex justify-between">
                 <p>Adresse mail:</p>
-                <p>{session.user.email}</p>
+                <p>{user.email}</p>
               </span>
             </h2>
+            {localUser && (
+              <h2 className="text-black font-bold text-lg mb-2">
+                <span className="flex justify-between">
+                  <p>Compte créé le:</p>
+                  <p>{new Date(localUser.createdAt).toLocaleDateString()}</p>
+                </span>
+              </h2>
+            )}
           </div>
           <div className="flex flex-col gap-4">
             <button
@@ -68,6 +77,18 @@ export default function UserInfo() {
             >
               Retour à l'accueil
             </button>
+            {localUser && (
+              <button
+                onClick={() => {
+                  logout();
+                  router.push("/login");
+                }}
+                className="bg-gradient-to-r from-red-700 to-red-800 hover:opacity-75 
+                text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl shadow-2xl py-2"
+              >
+                Se déconnecter
+              </button>
+            )}
           </div>
         </div>
       </div>

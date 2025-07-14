@@ -10,8 +10,7 @@ import { notFound } from "next/navigation";
 export default function Collection() {
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.books);
-  const itemsPerPage = 18;
-  const [currentPage, setCurrentPage] = React.useState(1);
+
 
   const romance = data.filter(book => 
   book.genres.includes("Romance"))
@@ -22,9 +21,7 @@ export default function Collection() {
     }
   }, [dispatch, status]);
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-  const startIdx = (currentPage - 1) * itemsPerPage;
-  const currentItems = data.slice(startIdx, startIdx + itemsPerPage);
+ 
 
   if (status === "loading") return <div>Chargement...</div>;
   if (!data.length) return <notFound/>;
