@@ -7,21 +7,23 @@ const cartSlice = createSlice({
     total: 0
   },
   reducers: {
-    ajouterPanier: (state, action) => {
-      const product = action.payload;
-      const existingItem = state.items.find(item => item.id === product.id);
-      
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        state.items.push({
-          ...product,
-          quantity: 1
-        });
-      }
-    
-      state.total = state.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    },
+   ajouterPanier: (state, action) => {
+  const product = action.payload;
+  const existingItem = state.items.find(item => item.id === product.id);
+
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    const randomPrice = Math.floor(Math.random() * 20) + 1;
+    state.items.push({
+      ...product,
+      price: product.price ?? randomPrice,
+      quantity: 1
+    });
+  }
+
+  state.total = state.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+},
     
     retirerPanier: (state, action) => {
       const productId = action.payload;

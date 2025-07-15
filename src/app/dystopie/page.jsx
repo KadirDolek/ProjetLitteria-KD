@@ -30,7 +30,7 @@ export default function Collection() {
         Notre collection Dystopique:
       </h2>
 
-      <div className="flex flex-wrap gap-x-64 justify-center">
+      <div className="flex flex-wrap gap-x-64 gap-y-6 justify-center">
         {dystopie.map((book) => (
           <div
             key={book.id}
@@ -38,16 +38,15 @@ export default function Collection() {
           >
             <div className="flip-inner w-full h-full relative">
               {/* Devant */}
-              <div className="flip-front bg-transparent rounded-3xl shadow-2xl flex items-center justify-center p-4">
+              <div className="flip-front bg-transparent rounded-3xl shadow-2xl flex items-center justify-center">
                 <img
-                  className="rounded-2xl w-48 object-contain"
+                  className="rounded-2xl size-82 fit-contain"
                   src={book.image_url}
                   alt={book.title}
                 />
               </div>
-
               {/* Derrière */}
-              <div className="flip-back bg-transparent rounded-3xl shadow-2xl flex items-center justify-center p-4">
+              <div className="flip-back bg-gray-100 rounded-3xl shadow-2xl flex items-center justify-center p-4">
                 <Link href={`/details/${book.id}`}>
                   <p className="text-black text-sm text-center line-clamp-7 font-bold">
                     {book.description}

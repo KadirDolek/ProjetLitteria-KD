@@ -16,7 +16,7 @@ export default function Footer() {
           <div className='w-full text-black flex flex-col gap-2 sm:gap-3'>
             <h3 className='text-center font-bold text-base sm:text-lg mb-2'>Contact</h3>
             <span className='text-center text-sm sm:text-base'>
-              <strong>Adresse:</strong> blablalakld
+              <strong>Adresse:</strong> Place de la minoterie 10, 1080
             </span>
             <span className='text-center text-sm sm:text-base'>
               <strong>Mail:</strong> kadirdolek01@hotmail.com
