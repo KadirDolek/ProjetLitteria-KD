@@ -4,6 +4,9 @@ import React from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useLocalAuth } from "../../hooks/useLocalAuth";
+import Link from "next/link";
+;
+
 
 export default function UserInfo() {
   const { data: session, status } = useSession();
@@ -24,8 +27,12 @@ export default function UserInfo() {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="text-black text-xl">
-          Redirection vers la connexion...
+          Vous n'êtes pas connectés,
+          <Link className="text-amber-700 underline hover:opacity-75" href="/login">
+            connectez vous
+          </Link>  pour consulter vos données personnelles <br />
         </div>
+        
       </div>
     );
   }

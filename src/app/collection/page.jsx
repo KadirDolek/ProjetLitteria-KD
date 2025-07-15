@@ -31,7 +31,6 @@ export default function Collection() {
       <h2 className="ps-14 mb-12 text-amber-900 font-bold text-2xl">
         Notre collection complète:
       </h2>
-
       <div className="flex flex-wrap gap-x-64 gap-y-6 justify-center">
         {currentItems.map((book) => (
           <div

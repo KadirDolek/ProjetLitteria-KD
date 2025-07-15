@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import { addPurchase } from '../../store/historySlice'
 import { clearHist } from '../../store/cartSlice'
 

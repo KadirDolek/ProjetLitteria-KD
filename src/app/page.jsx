@@ -49,6 +49,7 @@ export default function Home() {
         transition={{ duration: 2 }}
         viewport={{ once: true, amount: 0.4 }}>
         <Carousel />
+        <img src="./read_book.png" className="absolute w-72 top-440 right-0" alt="" />
       </motion.section>
       <motion.section 
       className="flex justify-center flex-col mb-24"

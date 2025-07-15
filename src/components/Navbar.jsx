@@ -117,7 +117,6 @@ export default function Navbar() {
           />
         )} 
         <Link href="/panier" className="bxr bx-shopping-bag bx-bounce text-black cursor-pointer rounded-2xl scale-160" style={{ color: "#000000" }} />
-        <i className="bxr bx-moon text-black cursor-pointer rounded-2xl scale-160 " />
       </div>
     </nav>
   );

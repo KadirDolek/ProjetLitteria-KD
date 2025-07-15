@@ -32,7 +32,7 @@ export default function Collection() {
       <h2 className="ps-14 mb-12 text-amber-900 font-bold text-2xl">
         Notre collection de livre pour écoles:
       </h2>
-
+        <img className="w-82 absolute left-324 top-24" src="./kid_book.png" alt="" />
       <div className="flex flex-wrap gap-x-64 gap-y-6 justify-center">
         {ecole.map((book) => (
           <div

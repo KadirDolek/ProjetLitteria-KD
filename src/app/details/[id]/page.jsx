@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { notFound, useParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchBooks } from '../../../store/bookSlice'
 import { ajouterPanier } from '../../../store/cartSlice'
@@ -22,7 +22,7 @@ export default function Details() {
   
   const product = data.find(m => m.id.toString() === id);
   
-  if (!product) return notFound();
+  if (!product) return <notFound/>;
   
   const handleAjouterPanier = () => {
     dispatch(ajouterPanier(product));

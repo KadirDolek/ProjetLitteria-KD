@@ -30,7 +30,15 @@ export default function Collection() {
       <h2 className="ps-14 mb-12 text-amber-900 font-bold text-2xl">
         Notre collection de Romance:
       </h2>
-
+      <img className="size-54 absolute" src="./love_book.png" alt="" />
+      <img className="size-54 absolute left-387 top-64" src="./love_book.png" alt="" />
+      <img className="size-54 absolute left-387 top-320" src="./love_book.png" alt="" />
+      <img className="size-54 absolute left-171 top-470" src="./love_book.png" alt="" />
+      <img className="size-54 absolute top-645" src="./love_book.png" alt="" />
+      <img className="size-54 absolute top-665 left-371" src="./love_book.png" alt="" />
+      <img className="size-54 absolute top-855" src="./love_book.png" alt="" />
+      <img className="size-54 absolute top-1055 left-266" src="./love_book.png" alt="" />
+      <img className="size-54 absolute top-1255" src="./love_book.png" alt="" />
       <div className="flex flex-wrap gap-x-64 gap-y-6 justify-center">
         {romance.map((book) => (
           <div
