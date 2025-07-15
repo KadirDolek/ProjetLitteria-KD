@@ -46,9 +46,12 @@ const cartSlice = createSlice({
     viderPanier: (state) => {
       state.items = [];
       state.total = 0;
+    },
+     clearHist: (state) => {
+      state.items = [];
     }
   }
 });
 
-export const { ajouterPanier, retirerPanier, modifierQuantite, viderPanier } = cartSlice.actions;
+export const { ajouterPanier, retirerPanier, modifierQuantite, viderPanier, clearHist } = cartSlice.actions;
 export default cartSlice.reducer;
