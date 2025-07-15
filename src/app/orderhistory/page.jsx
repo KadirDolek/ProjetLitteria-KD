@@ -1,11 +1,29 @@
 'use client'
 
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Calendar, Package, CreditCard, MapPin, User } from 'lucide-react'
+import { loadUserPurchases } from '../../store/historySlice'
+import { useSession } from 'next-auth/react'
+import { useLocalAuth } from '../../hooks/useLocalAuth'
 
 export default function PurchaseHistory() {
-  const { purchases } = useSelector(state => state.history)
+  const dispatch = useDispatch();
+  const { data: session } = useSession();
+  const { user: localUser } = useLocalAuth();
+  
+
+  const userId = session?.user?.email || localUser?.email || null;
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(loadUserPurchases(userId));
+    }
+  }, [userId, dispatch]);
+
+  const purchases = useSelector(state => 
+    userId ? state.history.userPurchases[userId] || [] : []
+  );
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('fr-FR', {
@@ -14,16 +32,32 @@ export default function PurchaseHistory() {
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit'
-    })
-  }
+    });
+  };
 
   const getPaymentMethodName = (method) => {
     const methods = {
       'visa': 'Visa',
       'mastercard': 'Mastercard',
       'paypal': 'PayPal'
-    }
-    return methods[method] || method
+    };
+    return methods[method] || method;
+  };
+
+  if (!userId) {
+    return (
+      <section className='w-auto mt-32 mb-18 flex flex-wrap flex-col'>
+        <h1 className='text-2xl text-black flex justify-center mb-12 mx-auto'>
+          Historique d'achat
+        </h1>
+        <div className='flex justify-center items-center h-64'>
+          <div className='text-center'>
+            <Package className='mx-auto h-16 w-16 text-gray-400 mb-4' />
+            <p className='text-gray-600 text-lg'>Veuillez vous connecter pour voir votre historique</p>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   if (purchases.length === 0) {
@@ -40,7 +74,7 @@ export default function PurchaseHistory() {
           </div>
         </div>
       </section>
-    )
+    );
   }
 
   return (
@@ -50,10 +84,9 @@ export default function PurchaseHistory() {
       </h1>
       
       <div className='max-w-6xl mx-auto px-4'>
-        <div className='space-y-6'>
+        <div className='space-y-6 w-160'>
           {purchases.map((purchase) => (
             <div key={purchase.id} className='bg-white rounded-2xl shadow-lg border-2 overflow-hidden'>
-              {/* En-tête de la commande */}
               <div className='bg-gradient-to-r from-amber-50 to-orange-50 px-6 py-4 border-b'>
                 <div className='flex justify-between items-start'>
                   <div className='flex items-center space-x-4'>
@@ -81,7 +114,6 @@ export default function PurchaseHistory() {
                 </div>
               </div>
 
-              {/* Informations de livraison */}
               <div className='px-6 py-4 bg-gray-50 border-b'>
                 <div className='flex items-start space-x-6'>
                   <div className='flex items-center text-gray-600'>
@@ -99,7 +131,6 @@ export default function PurchaseHistory() {
                 </div>
               </div>
 
-              {/* Articles achetés */}
               <div className='px-6 py-4'>
                 <h3 className='text-lg font-semibold text-gray-800 mb-4'>
                   Articles commandés ({purchase.items.length})
@@ -108,7 +139,7 @@ export default function PurchaseHistory() {
                   {purchase.items.map((item) => (
                     <div key={item.id} className='flex items-center space-x-4 p-3 bg-gray-50 rounded-lg'>
                       <img 
-                        src={item.image_url} 
+                        src={item.image} 
                         alt={item.title}
                         className='h-16 w-12 object-cover rounded shadow-sm'
                       />
@@ -122,16 +153,12 @@ export default function PurchaseHistory() {
                         <p className='font-semibold text-gray-900'>
                           {(item.price * item.quantity).toFixed(2)} €
                         </p>
-                        <p className='text-sm text-gray-600'>
-                          {item.price.toFixed(2)} € / unité
-                        </p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Résumé de la commande */}
               <div className='px-6 py-4 bg-gray-50 border-t'>
                 <div className='flex justify-center items-center'>
                   <span className='text-sm text-gray-600'>
@@ -144,5 +171,5 @@ export default function PurchaseHistory() {
         </div>
       </div>
     </section>
-  )
+  );
 }

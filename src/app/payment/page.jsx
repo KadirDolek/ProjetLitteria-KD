@@ -5,67 +5,76 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Loader2 } from 'lucide-react'
 import { addPurchase } from '../../store/historySlice'
 import { clearHist } from '../../store/cartSlice'
+import { useSession } from 'next-auth/react'
+import { useLocalAuth } from '../../hooks/useLocalAuth'
+import Link from 'next/link'
 
 export default function Page() {
   const dispatch = useDispatch();
-  const [selectedMethod, setSelectedMethod] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [paymentSuccess, setPaymentSuccess] = useState(false)
-  const [showPayment, setShowPayment] = useState(false)
+  const { data: session } = useSession();
+  const { user: localUser } = useLocalAuth();
+  const [selectedMethod, setSelectedMethod] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [showPayment, setShowPayment] = useState(false);
  
   const [userInfo, setUserInfo] = useState({
     firstName: '',
     lastName: '',
     address: ''
-  })
+  });
  
-  const { items } = useSelector(state => state.cart)
+  const { items } = useSelector(state => state.cart);
 
   const totalPrice = items.reduce((total, item) => {
-    return total + (item.price * (item.quantity || 1))
-  }, 0)
+    return total + (item.price * (item.quantity || 1));
+  }, 0);
 
-  const handlePayment = () => {
-    if (!selectedMethod) return alert('Veuillez sélectionner un moyen de paiement.')
-    setIsLoading(true)
-    setPaymentSuccess(false)
+  // Détermine l'ID utilisateur
+  const userId = session?.user?.email || localUser?.email || 'guest';
 
-    setTimeout(() => {
-      const purchaseData = {
-        items: items.map(item => ({
-          id: item.id,
-          title: item.title,
-          price: item.price,
-          quantity: item.quantity || 1,
-          image: item.image
-        })),
-        total: totalPrice,
-        userInfo: userInfo,
-        paymentMethod: selectedMethod
-      };
-      
-      dispatch(addPurchase(purchaseData));
-      dispatch(clearHist()); 
-      
-      setIsLoading(false)
-      setPaymentSuccess(true)
-    }, 2000)
-  }
+ const handlePayment = () => {
+  if (!selectedMethod) return alert('Veuillez sélectionner un moyen de paiement.');
+  setIsLoading(true);
+
+  // Préparation des données
+  const purchaseItems = items.map(item => ({
+    id: item.id,
+    title: item.title,
+    price: item.price,
+    quantity: item.quantity || 1,
+    image: item.image
+  }));
+
+  dispatch(addPurchase({
+    userId,
+    items: purchaseItems,
+    total: totalPrice,
+    userInfo,
+    paymentMethod: selectedMethod
+  }));
+
+  setTimeout(() => {
+    dispatch(clearHist());
+    setIsLoading(false);
+    setPaymentSuccess(true);
+  }, 2000);
+};
 
   const handleUserSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!userInfo.firstName || !userInfo.lastName || !userInfo.address) {
-      alert('Veuillez remplir tous les champs.')
-      return
+      alert('Veuillez remplir tous les champs.');
+      return;
     }
-    setShowPayment(true)
-  }
+    setShowPayment(true);
+  };
 
   const paymentMethods = [
     { name: 'Visa', id: 'visa', img: 'https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png' },
     { name: 'Mastercard', id: 'mastercard', img: 'https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png' },
     { name: 'PayPal', id: 'paypal', img: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg' },
-  ]
+  ];
 
   return (
     <section className='h-auto'>
@@ -94,6 +103,7 @@ export default function Page() {
                   className='p-2 rounded border text-black'
                   value={userInfo.firstName}
                   onChange={(e) => setUserInfo({ ...userInfo, firstName: e.target.value })}
+                  required
                 />
                 <input
                   type="text"
@@ -101,6 +111,7 @@ export default function Page() {
                   className='p-2 rounded border text-black'
                   value={userInfo.lastName}
                   onChange={(e) => setUserInfo({ ...userInfo, lastName: e.target.value })}
+                  required
                 />
                 <input
                   type="text"
@@ -108,6 +119,7 @@ export default function Page() {
                   className='p-2 rounded border text-black'
                   value={userInfo.address}
                   onChange={(e) => setUserInfo({ ...userInfo, address: e.target.value })}
+                  required
                 />
                 <button
                   type="submit"
@@ -185,15 +197,12 @@ export default function Page() {
                         <p className="text-gray-600">{userInfo.address}</p>
                       </div>
                       <div className="mt-6">
-                        <button
-                          onClick={() => {
-                            setPaymentSuccess(false);
-                            setShowPayment(false);
-                          }}
-                          className="w-full bg-amber-700 text-white py-2 px-4 rounded-md font-medium hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                        <Link
+                          href="/"
+                          className="w-full bg-amber-700 text-white py-2 px-4 rounded-md font-medium hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 inline-block text-center"
                         >
-                          Retour
-                        </button>
+                          Retour à l'accueil
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -204,5 +213,5 @@ export default function Page() {
         </div>
       </div>
     </section>
-  )
+  );
 }

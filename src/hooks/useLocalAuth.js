@@ -1,45 +1,55 @@
 import { useState, useEffect } from 'react';
-import { localAuth } from '../utils/LocalAuth';
 
 export const useLocalAuth = () => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const currentUser = localAuth.getCurrentUser();
-    setUser(currentUser);
-    setLoading(false);
-  }, []);
 
   const login = (email, password) => {
-    const result = localAuth.login(email, password);
-    if (result.success) {
-      setUser(result.user);
+    // Vérification des identifiants (simplifiée)
+    const users = JSON.parse(localStorage.getItem('localUsers')) || [];
+    const foundUser = users.find(u => u.email === email && u.password === password);
+    
+    if (foundUser) {
+      setUser(foundUser);
+      localStorage.setItem('currentLocalUser', JSON.stringify(foundUser));
+      return { success: true, message: 'Connexion réussie' };
     }
-    return result;
+    return { success: false, message: 'Identifiants incorrects' };
   };
 
-  const register = (email, password) => {
-    const result = localAuth.register(email, password);
-    if (result.success) {
-      setUser(result.user);
-      // Ca permet de se connecter qd on finit l'inscription
-      localAuth.login(email, password);
+  const register = (email, password, name) => {
+    const users = JSON.parse(localStorage.getItem('localUsers')) || [];
+    
+    if (users.some(u => u.email === email)) {
+      return { success: false, message: 'Cet email est déjà utilisé' };
     }
-    return result;
+    
+    const newUser = {
+      email,
+      password,
+      name,
+      image: '/default-user.png' // Image par défaut
+    };
+    
+    users.push(newUser);
+    localStorage.setItem('localUsers', JSON.stringify(users));
+    setUser(newUser);
+    localStorage.setItem('currentLocalUser', JSON.stringify(newUser));
+    
+    return { success: true, message: 'Inscription réussie' };
   };
 
   const logout = () => {
-    localAuth.logout();
     setUser(null);
+    localStorage.removeItem('currentLocalUser');
   };
 
-  return {
-    user,
-    loading,
-    login,
-    register,
-    logout,
-    isLoggedIn: !!user
-  };
+  // Vérifie si un utilisateur est déjà connecté au chargement
+  useEffect(() => {
+    const savedUser = localStorage.getItem('currentLocalUser');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  return { user, login, register, logout };
 };
