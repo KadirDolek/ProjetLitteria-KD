@@ -133,15 +133,10 @@ export default function PurchaseHistory() {
 
               {/* Résumé de la commande */}
               <div className='px-6 py-4 bg-gray-50 border-t'>
-                <div className='flex justify-between items-center'>
+                <div className='flex justify-center items-center'>
                   <span className='text-sm text-gray-600'>
                     Commande #{purchase.id}
                   </span>
-                  <div className='text-right'>
-                    <p className='text-sm text-gray-600'>
-                      Total: {purchase.total.toFixed(2)} €
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>

@@ -192,7 +192,7 @@ export default function Page() {
                           }}
                           className="w-full bg-amber-700 text-white py-2 px-4 rounded-md font-medium hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
                         >
-                          Retour à l'accueil
+                          Retour
                         </button>
                       </div>
                     </div>
