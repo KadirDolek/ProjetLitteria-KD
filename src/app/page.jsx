@@ -39,6 +39,7 @@ export default function Home() {
     <>
       {/* Carousel Section */}
       <motion.section
+        
         className="justify-center mb-16 hidden lg:flex relative"
         initial={{ opacity: 0, x: 80 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -241,6 +242,7 @@ export default function Home() {
             </button>
           </div>
         </div>
+         
       </motion.section>
     </>
   );

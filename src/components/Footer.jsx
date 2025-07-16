@@ -39,8 +39,15 @@ export default function Footer() {
                 Documentation
               </a>
             </span>
-            <span className='text-center font-bold text-sm sm:text-base hover:text-amber-700 transition-colors duration-200 cursor-pointer'>
-              FAQ
+            <span className='text-center'>
+              <a 
+                className='font-bold text-sm sm:text-base hover:text-amber-700 transition-colors duration-200' 
+                href="https://www.figma.com/design/5a2ozTQznFnfG5uFYDQXTm/Projet-Front?node-id=0-1&p=f&t=v6FgzuAKE1bQD5s7-0" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Maquette Figma
+              </a>
             </span>
             <span className='text-center text-sm sm:text-base'>
               Copyright ©2025

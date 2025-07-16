@@ -84,7 +84,7 @@ export default function PurchaseHistory() {
       </h1>
       
       <div className='max-w-6xl mx-auto px-4'>
-        <div className='space-y-6 w-160'>
+        <div className='space-y-6 w-auto md:w-160'>
           {purchases.map((purchase) => (
             <div key={purchase.id} className='bg-white rounded-2xl shadow-lg border-2 overflow-hidden'>
               <div className='bg-gradient-to-r from-amber-50 to-orange-50 px-6 py-4 border-b'>

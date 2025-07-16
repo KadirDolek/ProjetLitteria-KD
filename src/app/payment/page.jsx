@@ -99,7 +99,7 @@ export default function Page() {
 
   return (
     <section className="h-auto">
-      <div className="flex justify-center mt-32 mb-24">
+      <div className="flex justify-center mt-32 mb-24 flex-wrap-reverse">
         <div className="h-[500px] w-[500px] shadow-2xl rounded-2xl">
           <iframe
             src={mapSrc}
