@@ -29,7 +29,13 @@ export default function Collection() {
       <h2 className="ps-14 mb-12 text-amber-900 font-bold text-2xl">
         Notre collection Dystopique:
       </h2>
-
+        <img src="./etoilebg.png" className="w-84 absolute top-78" alt="" />
+        <img src="./etoilebg.png" className="w-84 absolute right-112 top-52" alt="" />
+        <img src="./etoilebg.png" className="w-84 absolute top-164 left-100 " alt="" />
+        <img src="./etoilebg.png" className="w-84 absolute top-264 left-0  " alt="" />
+        <img src="./etoilebg.png" className="w-84 absolute top-364 left-120  " alt="" />
+        <img src="./etoilebg.png" className="w-84 absolute top-284 left-370  " alt="" />
+        <img src="./etoilebg.png" className="w-84 absolute top-444 left-320  " alt="" />
       <div className="flex flex-wrap gap-x-64 gap-y-6 justify-center">
         {dystopie.map((book) => (
           <div
