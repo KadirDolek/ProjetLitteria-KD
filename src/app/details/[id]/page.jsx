@@ -30,7 +30,7 @@ export default function Details() {
     return notFound();
   }
 
-  const handleAjouterPanier = () => {
+  const handleAjouterPanier = () => {yy
     dispatch(ajouterPanier(product));
     setShowToast(true);
     setTimeout(() => setShowToast(false), 1500);

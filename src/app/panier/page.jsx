@@ -15,7 +15,29 @@ export default function Panier() {
     return total + (item.price * (item.quantity || 1));
   }, 0);
 
-  const discount = isPromoApplied ? totalPrice * 0.2 : 0;
+// 5ème livre gratos
+  const totalBooks = items.reduce((total, item) => total + (item.quantity || 1), 0);
+  const freeBooks = isPromoApplied ? Math.floor(totalBooks / 5) : 0;
+  
+  const pasChere = () => {
+    if (items.length === 0) return 0;
+    const allBooks = [];
+    items.forEach(item => {
+      for (let i = 0; i < (item.quantity || 1); i++) {
+        allBooks.push(parseFloat(item.price));
+      }
+    });
+    allBooks.sort((a, b) => a - b);
+      let discount = 0;
+  for (let i = 0; i < freeBooks; i++) {
+    if (allBooks[i * 5]) { 
+      discount += allBooks[i * 5];
+    }
+  }
+    return discount;
+  };
+
+  const discount = isPromoApplied ? pasChere() : 0;
   const finalPrice = totalPrice - discount;
 
   const handleRetirerProduit = (productId) => {
@@ -130,10 +152,13 @@ export default function Panier() {
               'Votre panier est vide'
             ) : (
               <>
-                Total : {totalPrice.toFixed(2)}€ ({items.length} article{items.length > 1 ? 's' : ''})<br />
-                {isPromoApplied && (
+                Total : {totalPrice.toFixed(2)}€ ({totalBooks} livre{totalBooks > 1 ? 's' : ''})<br />
+                {isPromoApplied && discount > 0 && (
                   <>
-                    <span className='text-green-600'>Réduction : -{discount.toFixed(2)}€ (20%)</span><br />
+                    <span className='text-green-600'>
+                      Réduction : -{discount.toFixed(2)}€ 
+                      ({freeBooks} livre{freeBooks > 1 ? 's' : ''} gratuit{freeBooks > 1 ? 's' : ''})
+                    </span><br />
                     <span>Total final : {finalPrice.toFixed(2)}€</span>
                   </>
                 )}
