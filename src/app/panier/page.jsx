@@ -131,7 +131,7 @@ export default function Panier() {
             <p className='text-black text-lg sm:text-2xl text-center'>Code de réduction:</p>
             <div className='flex gap-2 w-full sm:w-auto'>
               <input 
-                className='bg-white border border-black px-2 py-1 flex-1 sm:flex-initial text-sm sm:text-base' 
+                className='bg-white border border-black px-2 py-1 flex-1 sm:flex-initial text-sm sm:text-base text-black' 
                 type="text" 
                 placeholder='Code de réduction' 
                 value={promoCode}

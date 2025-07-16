@@ -37,8 +37,10 @@ export default function UserInfo() {
     );
   }
 
-  // Utiliser les données de NextAuth ou du système local
+  // Je peux séparer nom et prénom comme ca, faut remplir userInfo un peu
   const user = session?.user || localUser;
+  const [firstName, ...lastNameParts] = (user.name || '').split(' ');
+  const lastName = lastNameParts.join(' ');
 
   return (
     <section className="w-auto mt-32 mb-18 flex flex-wrap flex-col">
@@ -57,8 +59,14 @@ export default function UserInfo() {
           <div>
             <h2 className="text-black font-bold text-lg mb-2">
               <span className="flex justify-between">
-                <p> Nom d'utilisateur:</p>
-                <p>{user.name}</p>
+                <p> Prénom:</p>
+                <p>{firstName}</p>
+              </span>
+            </h2>
+            <h2 className="text-black font-bold text-lg mb-2">
+              <span className="flex justify-between">
+                <p> Nom:</p>
+                <p>{lastName}</p>
               </span>
             </h2>
             <h2 className="text-black font-bold text-lg mb-2">
@@ -67,14 +75,6 @@ export default function UserInfo() {
                 <p>{user.email}</p>
               </span>
             </h2>
-            {localUser && (
-              <h2 className="text-black font-bold text-lg mb-2">
-                <span className="flex justify-between">
-                  <p>Compte créé le:</p>
-                  <p>{new Date(localUser.createdAt).toLocaleDateString()}</p>
-                </span>
-              </h2>
-            )}
           </div>
           <div className="flex flex-col gap-4">
             <button

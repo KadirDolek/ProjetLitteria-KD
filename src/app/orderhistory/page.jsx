@@ -108,7 +108,7 @@ export default function PurchaseHistory() {
                       {purchase.total.toFixed(2)} €
                     </p>
                     <span className='inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full'>
-                      {purchase.status === 'completed' ? 'Livré' : 'En cours'}
+                      {purchase.status === 'completed' ? 'En cours de livraison' : 'En attente'}
                     </span>
                   </div>
                 </div>

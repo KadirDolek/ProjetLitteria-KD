@@ -25,8 +25,8 @@ export default function Page() {
   });
  
     const mapSrc = userInfo.address
-  ? `https://www.google.com/maps/embed/v1/place?key=AIzaSyBwfPTLdTYLvTd21EIMsaMrYGy4giLmLzs&q=${encodeURIComponent(userInfo.address)}`
-  : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5037.387110338958!2d4.338645076848227!3d50.8553587581269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c38c275028d3%3A0xc7799151146ebf77!2sMolenGeek!5e0!3m2!1sen!2sbe!4v1752493420275!5m2!1sen!2sbe"
+    ? `https://www.google.com/maps/embed/v1/place?key=AIzaSyBwfPTLdTYLvTd21EIMsaMrYGy4giLmLzs&q=${encodeURIComponent(userInfo.address)}`
+    : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5037.387110338958!2d4.338645076848227!3d50.8553587581269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c38c275028d3%3A0xc7799151146ebf77!2sMolenGeek!5e0!3m2!1sen!2sbe!4v1752493420275!5m2!1sen!2sbe"
 
   const { items } = useSelector(state => state.cart);
 
@@ -193,9 +193,11 @@ export default function Page() {
                         </svg>
                       </div>
                       <h3 className="text-lg font-medium text-gray-900 mb-2">Paiement validé avec succès !</h3>
-                      <p className="text-gray-600 mb-4">
-                        Merci pour votre achat. Votre commande sera livrée sous 48 heures.
-                      </p>
+                     <p className="text-gray-600 mb-4">
+                        Merci pour votre achat. Votre commande sera livrée le{' '}
+                        {new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toLocaleDateString()}.
+                    </p>
+
                       <div className="bg-gray-50 p-4 rounded-lg">
                         <p className="font-medium text-gray-700">Adresse de livraison :</p>
                         <p className="text-gray-600">{userInfo.address}</p>
