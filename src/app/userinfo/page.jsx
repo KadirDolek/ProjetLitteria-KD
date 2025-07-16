@@ -1,19 +1,40 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useLocalAuth } from "../../hooks/useLocalAuth";
 import Link from "next/link";
-;
-
 
 export default function UserInfo() {
   const { data: session, status } = useSession();
-  const { user: localUser, logout } = useLocalAuth();
+  const { user: localUser, logout, updateUser } = useLocalAuth();
   const router = useRouter();
+  const [editMode, setEditMode] = useState(false);
 
+  // Combine user data
+  const user = session?.user || localUser;
 
+  // Initialize editableInfo
+  const [editableInfo, setEditableInfo] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+
+  // Update editableInfo when user data changes
+  useEffect(() => {
+    if (user) {
+      const [firstName = "", ...lastNameParts] = (user.name || "").split(" ");
+      const lastName = lastNameParts.join(" ");
+      
+      setEditableInfo({
+        firstName,
+        lastName,
+        email: user.email || "",
+      });
+    }
+  }, [user]);
 
   if (status === "loading") {
     return (
@@ -27,77 +48,102 @@ export default function UserInfo() {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="text-black text-xl">
-          Vous n'êtes pas connectés,
-          <Link className="text-amber-700 underline hover:opacity-75" href="/login">
-            connectez vous
-          </Link>  pour consulter vos données personnelles <br />
+          Vous n'êtes pas connectés,{" "}
+          <Link
+            className="text-amber-700 underline hover:opacity-75"
+            href="/login"
+          >
+            connectez-vous
+          </Link>{" "}
+          pour consulter vos données personnelles.
         </div>
-        
       </div>
     );
   }
 
-  // Je peux séparer nom et prénom comme ca, faut remplir userInfo un peu
-  const user = session?.user || localUser;
-  const [firstName, ...lastNameParts] = (user.name || '').split(' ');
-  const lastName = lastNameParts.join(' ');
+  if (!user) {
+    return null;
+  }
+
+  const handleSave = () => {
+    const updatedUser = {
+      ...user,
+      name: `${editableInfo.firstName} ${editableInfo.lastName}`,
+      email: editableInfo.email,
+    };
+
+    if (localUser) {
+      updateUser(updatedUser);
+    }
+
+    setEditMode(false);
+  };
 
   return (
     <section className="w-auto mt-32 mb-18 flex flex-wrap flex-col">
-      <h1 className="sm:text-sm lg:text-2xl text-black flex justify-center mb-12 text-2xl mx-auto">
+      <h1 className="text-2xl text-black text-center mb-12">
         Informations de votre compte
       </h1>
-      <div className="h-auto mx-auto rounded-3xl flex flex-wrap">
-        <div className="w-full lg:w-[600px] h-auto shadow-2xl mx-auto rounded-3xl px-8 py-8 flex flex-col gap-6 border-2">
-          <div className="flex justify-center">
-            <img
-              src={user.image}
-              alt="Photo de profil"
-              className="w-24 h-24 rounded-full"
-            />
-          </div>
-          <div>
-            <h2 className="text-black font-bold text-lg mb-2">
-              <span className="flex justify-between">
-                <p> Prénom:</p>
-                <p>{firstName}</p>
-              </span>
-            </h2>
-            <h2 className="text-black font-bold text-lg mb-2">
-              <span className="flex justify-between">
-                <p> Nom:</p>
-                <p>{lastName}</p>
-              </span>
-            </h2>
-            <h2 className="text-black font-bold text-lg mb-2">
-              <span className="flex justify-between">
-                <p>Adresse mail:</p>
-                <p>{user.email}</p>
-              </span>
-            </h2>
-          </div>
-          <div className="flex flex-col gap-4">
-            <button
-              onClick={() => router.push("/")}
-              className="bg-gradient-to-r from-amber-700 to-orange-800 hover:opacity-75 
-              text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl shadow-2xl py-2"
-            >
-              Retour à l'accueil
-            </button>
-            {localUser && (
+      <div className="mx-auto rounded-3xl shadow-2xl px-8 py-8 w-full max-w-lg border-2">
+        <div className="relative flex justify-center mb-6 text-black text-center">
+          <img
+            src={user.image || "/default-user.png"}
+            alt="Photo de merde qui bug"
+            className="w-24 h-24 rounded-full"
+          />
+
+          <div className="absolute top-0 right-0">
+            {!editMode ? (
               <button
-                onClick={() => {
-                  logout();
-                  router.push("/login");
-                }}
-                className="bg-gradient-to-r from-red-700 to-red-800 hover:opacity-75 
-                text-white font-bold cursor-pointer w-48 mx-auto rounded-2xl shadow-2xl py-2"
+                onClick={() => setEditMode(true)}
+                className="text-red-600 px-4 py-2 rounded-xl hover:text-red-800 cursor-pointer shadow-xl hover:scale-115"
               >
-                Se déconnecter
+                Modifier
+              </button>
+            ) : (
+              <button
+                onClick={handleSave}
+                className="text-green-500 px-4 py-2 rounded-xl hover:opacity-75"
+              >
+                Enregistrer
               </button>
             )}
           </div>
         </div>
+
+        <label className="text-black font-bold">Prénom :</label>
+        <input
+          type="text"
+          className="p-2 border rounded mb-4 w-full text-black border-none"
+          readOnly={!editMode}
+          value={editableInfo.firstName}
+          onChange={(e) =>
+            setEditableInfo({ ...editableInfo, firstName: e.target.value })
+          }
+        />
+
+        <label className="text-black font-bold">Nom :</label>
+        <input
+          type="text"
+          className="p-2 border rounded mb-4 w-full text-black border-none"
+          readOnly={!editMode}
+          value={editableInfo.lastName}
+          onChange={(e) =>
+            setEditableInfo({ ...editableInfo, lastName: e.target.value })
+          }
+        />
+
+        <label className="text-black font-bold">Email :</label>
+        <input
+          type="email"
+          className="p-2 border rounded mb-4 w-full text-black border-none"
+          readOnly={!editMode}
+          value={editableInfo.email}
+          onChange={(e) =>
+            setEditableInfo({ ...editableInfo, email: e.target.value })
+          }
+        />
+      
       </div>
     </section>
   );

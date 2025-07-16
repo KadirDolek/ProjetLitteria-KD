@@ -39,11 +39,11 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${geistMerienda.variable} ${geistUbuntu_Sans.variable} antialiased`}> 
         <Providers>
-        <Provider store={store}>
-        <Navbar/>
-        {children}
-        <Footer/>
-        </Provider>
+          <Provider store={store}>
+            <Navbar/>
+              {children}
+            <Footer/>
+          </Provider>
         </Providers>
       </body>
     </html>

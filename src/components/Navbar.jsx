@@ -34,7 +34,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-transparent flex justify-between relative">
+    <nav className="bg-transparent flex justify-between relative mb-42">
       <div className="max-w-7xl flex items-center pt-0">
         <div className="flex items-center space-x-4">
           <Link href="/" className="text-black font-bold text-xl min-w-full mt-3">

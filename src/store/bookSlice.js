@@ -1,13 +1,15 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
-  const res = await fetch('https://example-data.draftbit.com/books');
+export const fetchBooks = createAsyncThunk("books/fetchBooks", async () => {
+  const res = await fetch("https://example-data.draftbit.com/books");
   const data = await res.json();
 
   return data.map((book, index) => {
-    const basePrice = parseFloat(book.price ?? (Math.random() * 20 + 5).toFixed(2));
+    const basePrice = parseFloat(
+      book.price ?? (Math.random() * 20 + 5).toFixed(2)
+    );
 
-    // 1 livre sur 5 a promo 
+    // 1 livre sur 5 a promo
     const isPromo = index % 5 === 0;
 
     // Promo entre 10% et 30%
@@ -27,20 +29,20 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
 });
 
 const booksSlice = createSlice({
-  name: 'books',
-  initialState: { data: [], status: 'idle', error: null },
-  reducers: {
-    
-  },
+  name: "books",
+  initialState: { data: [], status: "idle", error: null },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBooks.pending, (state) => { state.status = 'loading'; })
+      .addCase(fetchBooks.pending, (state) => {
+        state.status = "loading";
+      })
       .addCase(fetchBooks.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.data = action.payload;
       })
       .addCase(fetchBooks.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.error = action.error.message;
       });
   },
