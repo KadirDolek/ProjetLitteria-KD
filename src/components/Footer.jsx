@@ -35,11 +35,11 @@ export default function Footer() {
             <span className='text-center'>
               <a 
                 className='font-bold text-sm sm:text-base hover:text-amber-700 transition-colors duration-200' 
-                href="/Projet-Litteria_DOC.pdf" 
+                href="/ProjetLitteriaDOC.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                Documentation 
+                Documentation
               </a>
             </span>
             <span className='text-center'>
