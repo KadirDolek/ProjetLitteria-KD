@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBooks } from "../../store/bookSlice";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default function Collection() {
 
@@ -83,7 +84,7 @@ export default function Collection() {
   // Au cas ou internet merde, ptit message en attendant
 
   if (status === "loading") return <div>Chargement...</div>;
-  if (!data.length) return <notFound/>;
+  if (!data.length) return notFound();
 
   return (
     <section className="h-auto mt-42 text-black mb-24">

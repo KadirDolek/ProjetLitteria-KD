@@ -96,6 +96,7 @@ export default function Page() {
       img: "https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg",
     },
   ];
+   
 
   return (
     <section className="h-auto">

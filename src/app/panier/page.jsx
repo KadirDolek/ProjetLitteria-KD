@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { retirerPanier, modifierQuantite, viderPanier, clearHist } from '../../store/cartSlice'
+import { retirerPanier, modifierQuantite, viderPanier } from '../../store/cartSlice'
 import Link from 'next/link'
 
 export default function Panier() {
