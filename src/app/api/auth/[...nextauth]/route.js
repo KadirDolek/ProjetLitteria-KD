@@ -14,15 +14,17 @@ const handler = NextAuth({
       return session
     },
     async jwt({ token, account, profile, user }) {
-        if (user) {
-      token.picture = user.image;
-    }
+      if (user) {
+        token.picture = user.image;
+      }
       return token
     }
   },
   pages: {
     signIn: '/login',
-  }
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+  debug: process.env.NODE_ENV === 'development',
 })
 
 export { handler as GET, handler as POST }
