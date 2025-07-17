@@ -134,6 +134,7 @@ et via `https://projetlitteria-kadirdolek.vercel.app/`
 - **LinkedIn** : [(https://www.linkedin.com/in/kadir-d%C3%B6lek-572975226/)]
 - **GitHub** : [(https://github.com/KadirDolek)]
 - **Notion** : [https://www.notion.so/Litteria-2334d615f32f80cda549d25847d196c1]
+- **Source** : [https://tailwindcss.com/],[https://nextjs.org/docs]µ et Claude. 
 
 ## 📊 API et données
 

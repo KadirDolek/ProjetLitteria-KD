@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-// Hook personnalisé pour gérer une authentification locale avec localStorage
+// Hook personnalisé pour gérer une authentification en localStorage
 export const useLocalAuth = () => {
   const [user, setUser] = useState(null); // État de l'utilisateur actuel
 
