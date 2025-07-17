@@ -68,7 +68,7 @@ Le design de Litteria a été conçu avec une attention particulière portée à
 
 1. **Cloner le repository**
 ```bash
-git clone [votre-repo-url]
+git clone [ProjetLitteria-KD]
 cd litteria
 ```
 
@@ -81,7 +81,7 @@ npm install
 Créer un fichier `.env.local` :
 ```env
 NEXTAUTH_URL=https://projetlitteria-kadirdolek.vercel.app/
-NEXTAUTH_SECRET=votre-secret-key
+NEXTAUTH_SECRET=(je dis paaaas)
 GOOGLE_CLIENT_ID=1079590955921-2utlv1bjl77tuv5ggqo5e4jhkde9k7a3.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=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
 ```
