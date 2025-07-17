@@ -96,14 +96,14 @@ export default function UserInfo() {
             {!editMode ? (
               <button
                 onClick={() => setEditMode(true)}
-                className="text-red-600 px-4 py-2 rounded-xl hover:text-red-800 cursor-pointer shadow-xl hover:scale-115"
+                className="text-red-600 px-4 py-2 rounded-xl hover:text-red-800 cursor-pointer shadow-xl hover:scale-115 text-md"
               >
                 Modifier
               </button>
             ) : (
               <button
                 onClick={handleSave}
-                className="text-green-500 px-4 py-2 rounded-xl hover:opacity-75"
+                className="text-green-500 px-4 py-2 rounded-xl hover:opacity-75 text-md"
               >
                 Enregistrer
               </button>
