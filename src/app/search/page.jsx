@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBooks } from '../../store/bookSlice';
 import Link from 'next/link';
 
-export default function SearchPage() {
+// Separate component that uses useSearchParams
+function SearchResults() {
   const searchParams = useSearchParams();
-//   Grave important pour la recherche
   const query = searchParams.get('q') || '';
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.books);
@@ -54,7 +54,7 @@ export default function SearchPage() {
   if (status === 'failed') return <div className="text-red-500">Erreur de chargement</div>;
 
   return (
-    <div className="container mx-auto px-4 py-36">
+    <>
       <h1 className="text-3xl font-bold mb-8 text-amber-900">
         Résultats de recherche pour "{query}"
       </h1>
@@ -100,6 +100,22 @@ export default function SearchPage() {
       ) : (
         <p className="text-black text-xl text-center">Aucun résultat trouvé.</p>
       )}
+    </>
+  );
+}
+
+// Loading fallback component
+function SearchLoading() {
+  return <div className="text-black">Chargement de la recherche...</div>;
+}
+
+// Main component
+export default function SearchPage() {
+  return (
+    <div className="container mx-auto px-4 py-36">
+      <Suspense fallback={<SearchLoading />}>
+        <SearchResults />
+      </Suspense>
     </div>
   );
 }
