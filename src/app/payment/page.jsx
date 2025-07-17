@@ -102,14 +102,14 @@ export default function Page() {
     <section className="h-auto">
       <div className="flex justify-center mt-32 mb-24 flex-wrap-reverse">
         <div className="h-[500px] w-[500px] shadow-2xl rounded-2xl">
-          <iframe
-            src={mapSrc}
-            className="mx-auto my-2.5 rounded-2xl h-[480px] w-[480px]"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <iframe 
+              src={mapSrc}
+              className="mx-auto my-2.5 rounded-2xl w-full max-w-[500px] h-[400px] sm:h-[500px]"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
         </div>
 
         <div
