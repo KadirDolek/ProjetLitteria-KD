@@ -7,27 +7,33 @@ import { useLocalAuth } from "../../hooks/useLocalAuth";
 import Link from "next/link";
 
 export default function UserInfo() {
+  // Récupère la session utilisateur (authentification NextAuth)
   const { data: session, status } = useSession();
+
+  // Récupère l'utilisateur local via hook personnalisé
   const { user: localUser, logout, updateUser } = useLocalAuth();
+
   const router = useRouter();
+
+  // État pour modif les infos 
   const [editMode, setEditMode] = useState(false);
 
-  // Combine user data
+  // Définit l'utilisateur actif (session ou local)
   const user = session?.user || localUser;
 
-  // Initialize editableInfo
+  // Informations modifiables (nom, prénom, email)
   const [editableInfo, setEditableInfo] = useState({
     firstName: "",
     lastName: "",
     email: "",
   });
 
-  // Update editableInfo when user data changes
+  // Met à jour editableInfo quand les infos utilisateur changent
   useEffect(() => {
     if (user) {
       const [firstName = "", ...lastNameParts] = (user.name || "").split(" ");
       const lastName = lastNameParts.join(" ");
-      
+
       setEditableInfo({
         firstName,
         lastName,
@@ -36,6 +42,7 @@ export default function UserInfo() {
     }
   }, [user]);
 
+  // Affiche un message de chargement pendant la récupération de la session
   if (status === "loading") {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -44,6 +51,7 @@ export default function UserInfo() {
     );
   }
 
+  // Affiche un message si l'utilisateur n'est pas connecté
   if (status === "unauthenticated" && !localUser) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -61,10 +69,12 @@ export default function UserInfo() {
     );
   }
 
+  // Si aucun utilisateur, ne rien afficher
   if (!user) {
     return null;
   }
 
+  // Enregistre les modifications utilisateur
   const handleSave = () => {
     const updatedUser = {
       ...user,
@@ -73,12 +83,13 @@ export default function UserInfo() {
     };
 
     if (localUser) {
-      updateUser(updatedUser);
+      updateUser(updatedUser); // Met à jour l'utilisateur local
     }
 
-    setEditMode(false);
+    setEditMode(false); // Quitte le mode édition
   };
 
+  // Interface utilisateur
   return (
     <section className="w-auto mt-32 mb-18 flex flex-wrap flex-col">
       <h1 className="text-2xl text-black text-center mb-12">
@@ -92,6 +103,7 @@ export default function UserInfo() {
             className="w-24 h-24 rounded-full"
           />
 
+          {/* Bouton pour modifier ou enregistrer les données */}
           <div className="absolute top-0 right-0">
             {!editMode ? (
               <button
@@ -111,6 +123,7 @@ export default function UserInfo() {
           </div>
         </div>
 
+        {/* Champ prénom */}
         <label className="text-black font-bold">Prénom :</label>
         <input
           type="text"
@@ -122,6 +135,7 @@ export default function UserInfo() {
           }
         />
 
+        {/* Champ nom */}
         <label className="text-black font-bold">Nom :</label>
         <input
           type="text"
@@ -133,6 +147,7 @@ export default function UserInfo() {
           }
         />
 
+        {/* Champ email */}
         <label className="text-black font-bold">Email :</label>
         <input
           type="email"
@@ -143,7 +158,6 @@ export default function UserInfo() {
             setEditableInfo({ ...editableInfo, email: e.target.value })
           }
         />
-      
       </div>
     </section>
   );

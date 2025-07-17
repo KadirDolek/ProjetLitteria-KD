@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchBooks } from '../../store/bookSlice';
 import Link from 'next/link';
 
-// Separate component that uses useSearchParams
+
 function SearchResults() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';

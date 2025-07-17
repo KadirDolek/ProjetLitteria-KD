@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-// Journée de débugage avec cette saloperie, ca voulait sauvegarder dans l'historique selon le User.
+// Journée de débugage avec cette saloperie, ca voulait pas sauvegarder dans l'historique selon le User. J'me suis un peu aidé avec l'IA ici, pas mal même.
 const loadUserHistory = (userId) => {
   if (typeof window === "undefined") return [];
 

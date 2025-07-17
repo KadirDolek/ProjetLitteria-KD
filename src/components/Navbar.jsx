@@ -11,20 +11,22 @@ export default function Navbar() {
   const router = useRouter();
   const { data: session} = useSession();
 
+// Si ca ouvre le premier menu , ca ferme le deuxième
+
   const toggleMenu = () => {
     setIsOpen((prev) => {
       if (!prev) setIsOpened(false); 
       return !prev;
     });
   };
-
+//  Si ca ouvre le deuxième, ca ferme le premier oklmzer
   const toggleMenuUser = () => {
     setIsOpened((prev) => {
       if (!prev) setIsOpen(false); 
       return !prev;
     });
   };
-
+  // Fonction pour la recherche
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
