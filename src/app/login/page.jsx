@@ -16,7 +16,14 @@ export default function Login() {
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState('')
 
-  
+
+
+const handleGoogleLogin = () => {
+  signIn('google', { 
+    callbackUrl: window.location.origin,
+    redirect: false 
+  })
+}
 
 
   const handleRegister = (e) => {
@@ -216,7 +223,7 @@ export default function Login() {
             <p className='text-black text-center text-sm'>Connexion en cours...</p>
           )}
           <button className='mx-auto'
-            onClick={() => signIn('google')}
+            onClick={() => handleGoogleLogin('google')}
             disabled={status === 'loading'}
           > 
             <img 
