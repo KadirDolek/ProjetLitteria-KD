@@ -4,10 +4,10 @@ export const useLocalAuth = () => {
   const [user, setUser] = useState(null);
 
   const updateUser = (updatedUser) => {
-    // Update in local storage
+    
     localStorage.setItem("currentLocalUser", JSON.stringify(updatedUser));
     
-    // Update in users list if needed
+    
     const users = JSON.parse(localStorage.getItem("localUsers")) || [];
     const userIndex = users.findIndex(u => u.email === updatedUser.email);
     if (userIndex !== -1) {

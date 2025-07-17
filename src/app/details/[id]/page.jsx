@@ -6,9 +6,12 @@ import { fetchBooks } from '../../../store/bookSlice'
 import { ajouterPanier } from '../../../store/cartSlice'
 
 export default function Details() {
+  //  la base on utilise l'id pour l'ordre des objet dans l'API
   const { id } = useParams();
+  //  Ca dispatch fort l'api
   const dispatch = useDispatch();
   const { data, status } = useSelector(state => state.books);
+  //  pour le ptit 'ajouté au panier'
   const [showToast, setShowToast] = useState(false);
   
   useEffect(() => {

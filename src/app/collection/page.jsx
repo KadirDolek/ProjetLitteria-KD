@@ -13,8 +13,12 @@ export default function Collection() {
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.books);
   const itemsPerPage = 18;
+  // Pas nécessaire pcq je l'ai importé mais alz je le laisse le React.
   const [currentPage, setCurrentPage] = React.useState(1);
 
+
+
+  // Se déclenche au chargement des livres slmt si le statut est "idle" (au repos)
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchBooks());

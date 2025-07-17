@@ -18,6 +18,7 @@ export default function Login() {
 
 
 
+// Gère la connexion Google/NextAuth
 const handleGoogleLogin = () => {
   signIn('google', { 
     callbackUrl: window.location.origin,
@@ -25,42 +26,46 @@ const handleGoogleLogin = () => {
   })
 }
 
-
-  const handleRegister = (e) => {
-    e.preventDefault()
-    if (!registerForm.email || !registerForm.password) {
-      setMessage('Veuillez remplir tous les champs')
-      setMessageType('error')
-      return
-    }
-
-    const result = register(registerForm.email, registerForm.password)
-    setMessage(result.message)
-    setMessageType(result.success ? 'success' : 'error')
-    
-    if (result.success) {
-      setRegisterForm({ email: '', password: '' })
-      setTimeout(() => router.push('/userinfo'), 1000)
-    }
+// Gère l'inscription local
+const handleRegister = (e) => {
+  e.preventDefault()
+  if (!registerForm.email || !registerForm.password) {
+    setMessage('Veuillez remplir tous les champs')
+    setMessageType('error')
+    return
   }
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-    if (!loginForm.email || !loginForm.password) {
-      setMessage('Veuillez remplir tous les champs')
-      setMessageType('error')
-      return
-    }
-
-    const result = login(loginForm.email, loginForm.password)
-    setMessage(result.message)
-    setMessageType(result.success ? 'success' : 'error')
-    
-    if (result.success) {
-      setLoginForm({ email: '', password: '' })
-      setTimeout(() => router.push('/userinfo'), 1000)
-    }
+  const result = register(registerForm.email, registerForm.password)
+  setMessage(result.message)
+  setMessageType(result.success ? 'success' : 'error')
+  
+  // Redirige si suuuuuuuuu
+  if (result.success) {
+    setRegisterForm({ email: '', password: '' })
+    setTimeout(() => router.push('/userinfo'), 1000)
   }
+}
+
+// Gère la connexion local
+const handleLogin = (e) => {
+  e.preventDefault()
+  if (!loginForm.email || !loginForm.password) {
+    setMessage('Veuillez remplir tous les champs')
+    setMessageType('error')
+    return
+  }
+
+  const result = login(loginForm.email, loginForm.password)
+  setMessage(result.message)
+  setMessageType(result.success ? 'success' : 'error')
+  
+  // Redirige si on est suuuuuuuu
+  if (result.success) {
+    setLoginForm({ email: '', password: '' })
+    setTimeout(() => router.push('/userinfo'), 1000)
+  }
+}
+
 
   if (session) {
     return (

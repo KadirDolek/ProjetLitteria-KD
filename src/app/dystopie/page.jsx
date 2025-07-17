@@ -9,7 +9,7 @@ export default function Collection() {
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.books);
 
-
+//  Filtrage des données pour uniquement montrer le genres : Dystopia
   const dystopie = data.filter(book => 
   book.genres.includes("Dystopia"))
 
@@ -43,7 +43,7 @@ export default function Collection() {
             className="group flip-card w-64 h-82 relative rounded-3xl"
           >
             <div className="flip-inner w-full h-full relative">
-              {/* Devant */}
+           {/* Devant */}
               <div className="flip-front bg-transparent rounded-3xl shadow-2xl flex items-center justify-center">
                 <img
                   className="rounded-2xl size-82 fit-contain"
