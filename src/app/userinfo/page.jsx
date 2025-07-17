@@ -88,7 +88,7 @@ export default function UserInfo() {
         <div className="relative flex justify-center mb-6 text-black text-center">
           <img
             src={user.image || "/default-user.png"}
-            alt="Photo de merde qui bug"
+            alt="Photo indisponible"
             className="w-24 h-24 rounded-full"
           />
 
