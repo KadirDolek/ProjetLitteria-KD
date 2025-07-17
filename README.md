@@ -129,10 +129,11 @@ et via `https://projetlitteria-kadirdolek.vercel.app/`
 
 ## 🌐 Liens utiles
 
-- **Documentation** : [Lien vers la documentation]
+- **Documentation** : Accessible via pdf dans le footer
 - **Maquette Figma** : [(https://www.figma.com/design/5a2ozTQznFnfG5uFYDQXTm/Projet-Front?node-id=0-1&p=f&t=v6FgzuAKE1bQD5s7-0)]
 - **LinkedIn** : [(https://www.linkedin.com/in/kadir-d%C3%B6lek-572975226/)]
 - **GitHub** : [(https://github.com/KadirDolek)]
+- **Notion** : [https://www.notion.so/Litteria-2334d615f32f80cda549d25847d196c1]
 
 ## 📊 API et données
 
@@ -146,4 +147,4 @@ L'application utilise l'API `https://example-data.draftbit.com/books` pour récu
 Le projet est optimisé pour le déploiement sur Vercel avec configuration automatique des cookies et gestion des sessions.
 
 
-*Développé avec seum par [Kadir Dolek]*
+*Développé avec seum par Kadir Dolek*
