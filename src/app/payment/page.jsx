@@ -104,9 +104,7 @@ export default function Page() {
         <div className="h-[500px] w-[500px] shadow-2xl rounded-2xl">
           <iframe
             src={mapSrc}
-            className="m-auto my-1 rounded-2xl"
-            width="495"
-            height="495"
+            className="mx-auto my-2.5 rounded-2xl h-[480px] w-[480px]"
             style={{ border: 0 }}
             allowFullScreen={true}
             loading="lazy"
