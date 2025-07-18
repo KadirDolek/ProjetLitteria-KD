@@ -34,7 +34,6 @@ export default function Collection() {
       <img className="size-54 absolute left-171 top-470" src="./love_book.png" alt="" />
       <img className="size-54 absolute top-645" src="./love_book.png" alt="" />
       <img className="size-54 absolute top-855" src="./love_book.png" alt="" />
-      <img className="size-54 absolute top-1055 left-266" src="./love_book.png" alt="" />
       <img className="size-54 absolute top-1255" src="./love_book.png" alt="" />
       <div className="flex flex-wrap gap-x-64 gap-y-6 justify-center">
         {romance.map((book) => (
