@@ -25,7 +25,7 @@ const handleGoogleLogin = () => {
     redirect: false 
   })
 }
-
+ 
 // Gère l'inscription local
 const handleRegister = (e) => {
   e.preventDefault()

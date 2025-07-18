@@ -69,12 +69,12 @@ export default function UserInfo() {
     );
   }
 
-  // Si aucun utilisateur, ne rien afficher
+  // Si aucun utilisateur, n'affiche rien.
   if (!user) {
     return null;
   }
 
-  // Enregistre les modifications utilisateur
+  // Enregistre les modifications utilisateur 
   const handleSave = () => {
     const updatedUser = {
       ...user,
